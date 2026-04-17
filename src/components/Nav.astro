@@ -18,10 +18,13 @@ const links: { href: string; label: string; id: string }[] = [
 ---
 
 <nav class="sticky top-0 z-40 border-b border-[color:var(--color-grid)] bg-[color:var(--color-terminal-deep)]/95 backdrop-blur print:hidden">
-  <div class="mx-auto flex max-w-4xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-    <a href="/" class="flex items-center gap-2 font-semibold tracking-tight text-[color:var(--color-cool)] hover:text-[color:var(--color-alert-deep)]">
+  <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <a
+      href="/"
+      class="flex items-center gap-2 font-semibold tracking-tight text-[color:var(--color-cool)] hover:text-[color:var(--color-alert-deep)]"
+    >
       <span class="inline-block h-6 w-6 rounded-sm bg-[color:var(--color-alert)]" aria-hidden="true"></span>
-      <span>Pocket Guide</span>
+      <span>Heartland <span class="font-normal text-[color:var(--color-stone,#7a8593)]">· Pocket Guide</span></span>
     </a>
 
     <details class="relative md:hidden">
@@ -43,6 +46,15 @@ const links: { href: string; label: string; id: string }[] = [
             </a>
           </li>
         ))}
+        <li class="my-1 border-t border-[color:var(--color-grid)]"></li>
+        <li>
+          <a
+            href="https://heartlandprotocol.org"
+            class="block min-h-11 rounded px-3 py-2 text-sm text-[color:var(--color-stone,#7a8593)] hover:bg-[color:var(--color-terminal-deep)] hover:text-[color:var(--color-alert-deep)]"
+          >
+            Back to HEARTLAND ↗
+          </a>
+        </li>
       </ul>
     </details>
 
@@ -61,6 +73,14 @@ const links: { href: string; label: string; id: string }[] = [
           </a>
         </li>
       ))}
+      <li class="ml-3 border-l border-[color:var(--color-grid)] pl-3">
+        <a
+          href="https://heartlandprotocol.org"
+          class="text-sm text-[color:var(--color-stone,#7a8593)] hover:text-[color:var(--color-alert-deep)]"
+        >
+          HEARTLAND ↗
+        </a>
+      </li>
     </ul>
   </div>
 </nav>

@@ -1,8 +1,34 @@
 ---
-// Literal disclaimer text: heartland-app/NIW_INTEGRATION.md l.72–74
+// Literal disclaimer text: heartland-app/NIW_INTEGRATION.md l.72-74
+// Network links: @heartland/ui/tokens/network
+import { HEARTLAND_NETWORK } from '@heartland/ui/tokens/network';
 ---
-<footer class="mt-12 border-t border-[color:var(--color-grid)] bg-[color:var(--color-terminal-deep)] px-4 py-6 text-xs leading-relaxed text-[color:var(--color-cool)]/80 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-4xl space-y-3">
+
+<footer class="mt-12 border-t border-[color:var(--color-grid)] bg-[color:var(--color-terminal-deep)] px-4 py-10 text-xs leading-relaxed text-[color:var(--color-cool)]/80 sm:px-6 lg:px-8 print:hidden">
+  <div class="mx-auto max-w-4xl space-y-6">
+    <div>
+      <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-cool)]">
+        HEARTLAND Network
+      </p>
+      <ul class="flex flex-wrap gap-x-4 gap-y-2">
+        {HEARTLAND_NETWORK.map((entry) => (
+          <li>
+            <a
+              href={entry.url}
+              class={`text-[13px] transition-colors hover:text-[color:var(--color-alert-deep)] ${
+                entry.id === 'guide'
+                  ? 'font-semibold text-[color:var(--color-cool)]'
+                  : 'text-[color:var(--color-cool)]/80'
+              }`}
+              aria-current={entry.id === 'guide' ? 'page' : undefined}
+            >
+              {entry.shortLabel}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
     <p>
       This tool is designed for healthcare professionals as a clinical decision support
       resource. It does not provide medical diagnoses, treatment recommendations for
@@ -14,9 +40,9 @@
       It has not been validated against clinical outcomes data. Formal validation through
       registry data is a defined research objective.
     </p>
-    <p class="pt-2">
+    <p class="pt-2 text-[color:var(--color-cool)]/60">
       Content mirrors HEARTLAND Protocol v3.3 (Cureus 2025). Reference-only. No patient
-      data entered here.
+      data entered here. ·
       <a href="/about" class="underline hover:text-[color:var(--color-alert-deep)]">About &amp; sources</a>.
     </p>
   </div>

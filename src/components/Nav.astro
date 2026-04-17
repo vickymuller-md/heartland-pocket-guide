@@ -1,86 +1,147 @@
 ---
+import HeartLineMark from './HeartLineMark.astro';
+
 interface Props {
   pageId?: string;
 }
 const { pageId } = Astro.props;
 
 const links: { href: string; label: string; id: string }[] = [
-  { href: '/', label: 'Home', id: 'home' },
   { href: '/gdmt', label: 'GDMT', id: 'gdmt' },
   { href: '/red-flags', label: 'Red Flags', id: 'red-flags' },
   { href: '/titration', label: 'Titration', id: 'titration' },
-  { href: '/rpm-billing', label: 'RPM Billing', id: 'rpm-billing' },
   { href: '/risk-score', label: 'Risk Score', id: 'risk-score' },
-  { href: '/tiers', label: 'Tiers', id: 'tiers' },
-  { href: '/cards', label: 'Pocket Cards', id: 'cards' },
-  { href: '/about', label: 'About', id: 'about' },
+  { href: '/cards', label: 'Cards', id: 'cards' },
 ];
 ---
 
-<nav class="sticky top-0 z-40 border-b border-[color:var(--color-grid)] bg-[color:var(--color-terminal-deep)]/95 backdrop-blur print:hidden">
-  <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-    <a
-      href="/"
-      class="flex items-center gap-2 font-semibold tracking-tight text-[color:var(--color-cool)] hover:text-[color:var(--color-alert-deep)]"
-    >
-      <span class="inline-block h-6 w-6 rounded-sm bg-[color:var(--color-alert)]" aria-hidden="true"></span>
-      <span>Heartland <span class="font-normal text-[color:var(--color-stone,#7a8593)]">· Pocket Guide</span></span>
+<header
+  class="sticky top-0 z-40 border-b border-grid bg-terminal/85 backdrop-blur supports-[backdrop-filter]:bg-terminal/70 print:hidden"
+>
+  <div class="mx-auto flex max-w-[1200px] items-center justify-between gap-8 px-6 py-5">
+    <a href="/" class="group flex items-center gap-2.5">
+      <HeartLineMark class="h-7 w-7 text-alert transition-transform group-hover:scale-105" />
+      <span class="font-editorial text-[18px] font-semibold tracking-tight text-cool">
+        Heartland · Guide
+      </span>
+      <span
+        class="ml-1 hidden rounded-full border border-grid bg-panel px-2 py-0.5 font-mono text-[10.5px] tracking-tight text-cool/70 sm:inline-flex"
+      >
+        v0.1.0
+      </span>
     </a>
 
-    <details class="relative md:hidden">
-      <summary class="flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded border border-[color:var(--color-grid)] px-3 text-sm font-medium">
-        Menu
-      </summary>
-      <ul class="absolute right-0 z-50 mt-2 min-w-56 space-y-1 rounded border border-[color:var(--color-grid)] bg-[color:var(--color-terminal)] p-2 shadow-lg">
-        {links.map((l) => (
+    <nav
+      class="hidden items-center gap-8 font-editorial text-[14px] text-cool/80 md:flex"
+      aria-label="Primary"
+    >
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class:list={[
+            'transition-colors hover:text-alert',
+            pageId === l.id && 'text-cool',
+          ]}
+          aria-current={pageId === l.id ? 'page' : undefined}
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <details class="relative md:hidden">
+        <summary
+          class="flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border border-grid bg-panel px-4 py-2 font-editorial text-[13px] font-medium"
+        >
+          Menu
+        </summary>
+        <ul
+          class="absolute right-0 z-50 mt-3 w-64 space-y-1 rounded-2xl border border-grid bg-panel p-3 shadow-lg"
+        >
           <li>
             <a
-              href={l.href}
+              href="/"
               class:list={[
-                'block min-h-11 rounded px-3 py-2 text-sm hover:bg-[color:var(--color-terminal-deep)]',
-                pageId === l.id && 'bg-[color:var(--color-cool)] text-white hover:bg-[color:var(--color-cool)]',
+                'block min-h-11 rounded-lg px-3 py-2 font-editorial text-[13.5px] hover:bg-panel-hi',
+                pageId === 'home' && 'bg-panel-hi text-cool',
               ]}
-              aria-current={pageId === l.id ? 'page' : undefined}
             >
-              {l.label}
+              Home
             </a>
           </li>
-        ))}
-        <li class="my-1 border-t border-[color:var(--color-grid)]"></li>
-        <li>
-          <a
-            href="https://heartlandprotocol.org"
-            class="block min-h-11 rounded px-3 py-2 text-sm text-[color:var(--color-stone,#7a8593)] hover:bg-[color:var(--color-terminal-deep)] hover:text-[color:var(--color-alert-deep)]"
-          >
-            Back to HEARTLAND ↗
-          </a>
-        </li>
-      </ul>
-    </details>
+          {links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                class:list={[
+                  'block min-h-11 rounded-lg px-3 py-2 font-editorial text-[13.5px] hover:bg-panel-hi',
+                  pageId === l.id && 'bg-panel-hi text-cool',
+                ]}
+                aria-current={pageId === l.id ? 'page' : undefined}
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="/tiers"
+              class:list={[
+                'block min-h-11 rounded-lg px-3 py-2 font-editorial text-[13.5px] hover:bg-panel-hi',
+                pageId === 'tiers' && 'bg-panel-hi text-cool',
+              ]}
+            >
+              Tiers
+            </a>
+          </li>
+          <li>
+            <a
+              href="/rpm-billing"
+              class:list={[
+                'block min-h-11 rounded-lg px-3 py-2 font-editorial text-[13.5px] hover:bg-panel-hi',
+                pageId === 'rpm-billing' && 'bg-panel-hi text-cool',
+              ]}
+            >
+              RPM Billing
+            </a>
+          </li>
+          <li>
+            <a
+              href="/about"
+              class:list={[
+                'block min-h-11 rounded-lg px-3 py-2 font-editorial text-[13.5px] hover:bg-panel-hi',
+                pageId === 'about' && 'bg-panel-hi text-cool',
+              ]}
+            >
+              About
+            </a>
+          </li>
+          <li class="my-1 border-t border-grid"></li>
+          <li>
+            <a
+              href="https://heartlandprotocol.org"
+              class="block min-h-11 rounded-lg px-3 py-2 font-editorial text-[13.5px] text-stone hover:bg-panel-hi hover:text-alert"
+            >
+              Back to HEARTLAND ↗
+            </a>
+          </li>
+        </ul>
+      </details>
 
-    <ul class="hidden items-center gap-1 md:flex">
-      {links.map((l) => (
-        <li>
-          <a
-            href={l.href}
-            class:list={[
-              'rounded px-2 py-1 text-sm font-medium hover:text-[color:var(--color-alert-deep)]',
-              pageId === l.id && 'bg-[color:var(--color-cool)] text-white hover:text-white',
-            ]}
-            aria-current={pageId === l.id ? 'page' : undefined}
-          >
-            {l.label}
-          </a>
-        </li>
-      ))}
-      <li class="ml-3 border-l border-[color:var(--color-grid)] pl-3">
-        <a
-          href="https://heartlandprotocol.org"
-          class="text-sm text-[color:var(--color-stone,#7a8593)] hover:text-[color:var(--color-alert-deep)]"
-        >
-          HEARTLAND ↗
-        </a>
-      </li>
-    </ul>
+      <a
+        href="/about"
+        class="hidden items-center gap-2 rounded-full border border-grid bg-panel px-4 py-2.5 font-editorial text-[13.5px] font-medium text-cool/85 transition-colors hover:border-cool/40 hover:text-cool sm:inline-flex"
+      >
+        About
+      </a>
+      <a
+        href="https://heartlandprotocol.org"
+        class="group inline-flex items-center gap-2 rounded-full bg-cool px-5 py-2.5 font-editorial text-[13.5px] font-medium text-terminal transition-colors hover:bg-alert hover:text-cool"
+      >
+        HEARTLAND
+        <span class="transition-transform group-hover:translate-x-0.5">→</span>
+      </a>
+    </div>
   </div>
-</nav>
+</header>

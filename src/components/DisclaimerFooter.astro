@@ -1,49 +1,137 @@
 ---
-// Literal disclaimer text: heartland-app/NIW_INTEGRATION.md l.72-74
-// Network links: @heartland/ui/tokens/network
-import { HEARTLAND_NETWORK } from '@heartland/ui/tokens/network';
+import HeartLineMark from './HeartLineMark.astro';
+import { HEARTLAND_NETWORK, HEARTLAND_EXTERNAL_LINKS } from '@heartland/ui/tokens/network';
+
+const year = new Date().getFullYear();
 ---
 
-<footer class="mt-12 border-t border-[color:var(--color-grid)] bg-[color:var(--color-terminal-deep)] px-4 py-10 text-xs leading-relaxed text-[color:var(--color-cool)]/80 sm:px-6 lg:px-8 print:hidden">
-  <div class="mx-auto max-w-4xl space-y-6">
-    <div>
-      <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-cool)]">
-        HEARTLAND Network
-      </p>
-      <ul class="flex flex-wrap gap-x-4 gap-y-2">
-        {HEARTLAND_NETWORK.map((entry) => (
+<footer class="border-t border-grid bg-terminal print:hidden">
+  <div class="mx-auto max-w-[1200px] px-6 py-16">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-12">
+      <!-- Brand block -->
+      <div class="md:col-span-5">
+        <a href="https://guide.heartlandprotocol.org" class="inline-flex items-center gap-2.5">
+          <HeartLineMark class="h-7 w-7 text-alert" />
+          <span class="font-editorial text-[18px] font-semibold tracking-tight text-cool">
+            Heartland · Guide
+          </span>
+        </a>
+        <p class="mt-4 max-w-md font-editorial text-[14.5px] leading-relaxed text-cool/70">
+          Offline-first clinical pocket reference distilling the HEARTLAND Protocol v3.2
+          into bedside cards, decision tables, and pocket-sized print-outs. No login,
+          no patient data, no vendor lock-in.
+        </p>
+        <p class="mt-6 font-editorial text-[12.5px] leading-relaxed text-stone">
+          Built by Vicky Muller Ferreira, MD. For licensed clinicians only. Not a
+          medical device. Not for direct patient care. No patient health information
+          is ever stored.
+        </p>
+      </div>
+
+      <!-- Guide extras -->
+      <div class="md:col-span-2">
+        <p class="mb-4 font-editorial text-[12.5px] uppercase tracking-[0.18em] text-cool">
+          Guide
+        </p>
+        <ul class="space-y-3 font-editorial text-[14.5px]">
+          <li><a href="/gdmt" class="inline-flex items-baseline gap-1 text-cool/80 transition-colors hover:text-alert">GDMT</a></li>
+          <li><a href="/red-flags" class="inline-flex items-baseline gap-1 text-cool/80 transition-colors hover:text-alert">Red Flags</a></li>
+          <li><a href="/titration" class="inline-flex items-baseline gap-1 text-cool/80 transition-colors hover:text-alert">Titration</a></li>
+          <li><a href="/risk-score" class="inline-flex items-baseline gap-1 text-cool/80 transition-colors hover:text-alert">Risk Score</a></li>
+          <li><a href="/cards" class="inline-flex items-baseline gap-1 text-cool/80 transition-colors hover:text-alert">Pocket Cards</a></li>
+        </ul>
+      </div>
+
+      <!-- Research block -->
+      <div class="md:col-span-2">
+        <p class="mb-4 font-editorial text-[12.5px] uppercase tracking-[0.18em] text-cool">
+          Research
+        </p>
+        <ul class="space-y-3 font-editorial text-[14.5px]">
           <li>
             <a
-              href={entry.url}
-              class={`text-[13px] transition-colors hover:text-[color:var(--color-alert-deep)] ${
-                entry.id === 'guide'
-                  ? 'font-semibold text-[color:var(--color-cool)]'
-                  : 'text-[color:var(--color-cool)]/80'
-              }`}
-              aria-current={entry.id === 'guide' ? 'page' : undefined}
+              href={HEARTLAND_EXTERNAL_LINKS.cureus}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-baseline gap-1 text-cool/80 transition-colors hover:text-alert"
             >
-              {entry.shortLabel}
+              Cureus article
+              <span class="text-[11px] text-stone" aria-hidden>↗</span>
             </a>
           </li>
-        ))}
-      </ul>
+          <li>
+            <a
+              href={HEARTLAND_EXTERNAL_LINKS.zenodo}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-baseline gap-1 text-cool/80 transition-colors hover:text-alert"
+            >
+              Zenodo deposit
+              <span class="text-[11px] text-stone" aria-hidden>↗</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={HEARTLAND_EXTERNAL_LINKS.osf}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-baseline gap-1 text-cool/80 transition-colors hover:text-alert"
+            >
+              OSF deposit
+              <span class="text-[11px] text-stone" aria-hidden>↗</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={HEARTLAND_EXTERNAL_LINKS.orcid}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-baseline gap-1 text-cool/80 transition-colors hover:text-alert"
+            >
+              ORCID profile
+              <span class="text-[11px] text-stone" aria-hidden>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Network block -->
+      <div class="md:col-span-2">
+        <p class="mb-4 font-editorial text-[12.5px] uppercase tracking-[0.18em] text-cool">
+          Network
+        </p>
+        <ul class="space-y-3 font-editorial text-[14.5px]">
+          {HEARTLAND_NETWORK.map((entry) => {
+            const isCurrent = entry.id === 'guide';
+            return (
+              <li>
+                <a
+                  href={entry.url}
+                  target={isCurrent ? undefined : '_blank'}
+                  rel={isCurrent ? undefined : 'noopener noreferrer'}
+                  aria-current={isCurrent ? 'page' : undefined}
+                  class:list={[
+                    'inline-flex items-baseline gap-1 transition-colors hover:text-alert',
+                    isCurrent ? 'text-cool' : 'text-cool/80',
+                  ]}
+                >
+                  {entry.shortLabel}
+                  {!isCurrent && (
+                    <span class="text-[11px] text-stone" aria-hidden>↗</span>
+                  )}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
 
-    <p>
-      This tool is designed for healthcare professionals as a clinical decision support
-      resource. It does not provide medical diagnoses, treatment recommendations for
-      individual patients, or replace clinical judgment. Not intended for direct patient
-      care. For professional use only.
-    </p>
-    <p>
-      The HEARTLAND Risk Stratification Framework is a proposed tool under development.
-      It has not been validated against clinical outcomes data. Formal validation through
-      registry data is a defined research objective.
-    </p>
-    <p class="pt-2 text-[color:var(--color-cool)]/60">
-      Content mirrors HEARTLAND Protocol v3.3 (Cureus 2025). Reference-only. No patient
-      data entered here. ·
-      <a href="/about" class="underline hover:text-[color:var(--color-alert-deep)]">About &amp; sources</a>.
-    </p>
+    <div
+      class="mt-14 flex flex-col gap-3 border-t border-grid pt-6 font-editorial text-[12.5px] text-stone md:flex-row md:items-center md:justify-between"
+    >
+      <p>© {year} Vicky Muller Ferreira, MD · Released under MIT</p>
+      <p>Heartland · Guide · v0.1.0 · open source</p>
+    </div>
   </div>
 </footer>

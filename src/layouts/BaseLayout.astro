@@ -36,6 +36,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://guide.heart
     <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
     {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
     <script src="/src/pwa.ts"></script>
+
+    <!-- HEARTLAND canonical fonts -- Sora (editorial) + Instrument Serif (display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
     <title>{fullTitle}</title>
 
     {gaId && (
@@ -52,13 +61,20 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://guide.heart
       </script>
     )}
   </head>
-  <body class="bg-[color:var(--color-terminal)] text-[color:var(--color-cool)]">
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:bg-[color:var(--color-cool)] focus:text-white focus:px-3 focus:py-2 focus:rounded">
+  <body
+    class="min-h-screen flex flex-col bg-terminal font-editorial text-cool antialiased selection:bg-alert/40 selection:text-cool"
+  >
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:bg-cool focus:text-white focus:px-3 focus:py-2 focus:rounded"
+    >
       Skip to content
     </a>
     <Nav pageId={pageId} />
-    <main id="main" class="mx-auto max-w-4xl px-4 pb-16 pt-6 sm:px-6 lg:px-8">
-      <slot />
+    <main id="main" class="flex-1">
+      <div class="mx-auto max-w-4xl px-4 pb-16 pt-6 sm:px-6 lg:px-8">
+        <slot />
+      </div>
     </main>
     <DisclaimerFooter />
   </body>

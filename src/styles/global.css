@@ -1,22 +1,35 @@
 @import "tailwindcss";
 
 /*
-  HEARTLAND Pocket Guide — color tokens
-  Source of truth: heartland-app/app/globals.css (warm palette)
+  HEARTLAND Pocket Guide — color + typography tokens.
+  Mirrors the canonical palette used by every sibling site via
+  @heartland/ui/css/theme.css (Sora, Instrument Serif, warm palette).
 */
+
 @theme {
+  /* Core warm palette -- identical to every sibling site */
   --color-terminal: #faf6ee;
   --color-terminal-deep: #f2ecde;
+  --color-panel: #ffffff;
+  --color-panel-hi: #efe9dd;
   --color-grid: #e3dcd0;
+  --color-grid-hi: #c5bcac;
   --color-cool: #0f2544;
   --color-cool-soft: #1c365c;
+  --color-stone: #7a8593;
+  --color-signal: #2e6f5e;
+  --color-signal-deep: #1e4e41;
   --color-alert: #ff6b55;
   --color-alert-deep: #e04a35;
+  --color-critical: #d63a20;
   --color-success: #15803d;
   --color-warning: #b45309;
 
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
+  /* Typography -- match synthetic.heartlandprotocol.org canonical */
+  --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-editorial: "Sora", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono: "Sora", ui-monospace, Menlo, Consolas, monospace;
 }
 
 :root {
@@ -26,7 +39,7 @@
 html {
   background-color: var(--color-terminal);
   color: var(--color-cool);
-  font-family: var(--font-sans);
+  font-family: var(--font-editorial);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -67,7 +80,7 @@ details[open] > summary::after {
   content: "−";
 }
 
-/* Print styles — each page should be a scannable single section */
+/* Print styles */
 @media print {
   nav,
   .print\:hidden {

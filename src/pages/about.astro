@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About & Sources"
+  description="About the Rural HF Pocket Guide, author, sources, and how to cite."
+  pageId="about"
+>
+  <header class="mb-6">
+    <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">About</p>
+    <h1 class="mt-1 text-2xl font-bold sm:text-3xl">About this guide</h1>
+  </header>
+
+  <section class="prose max-w-none space-y-4 text-sm leading-relaxed">
+    <p>
+      The <strong>Rural HF Pocket Guide</strong> is a free, zero-login clinical reference for
+      primary care clinicians managing heart failure in rural and resource-limited US settings.
+      All content mirrors the <strong>HEARTLAND Protocol v3.3</strong> (Heart failure
+      Evidence-based Access in Rural Treatment, Linking Advanced Network Delivery), published in
+      Cureus in 2025.
+    </p>
+    <p>
+      This guide is a <em>reference-only</em> PWA. It does not accept patient input, track
+      identifiable data, or replace the interactive <a href="https://heartlandprotocol.org">HEARTLAND app</a>
+      (which offers risk-score calculation, titration workflows, and reporting for registered
+      clinicians).
+    </p>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="mb-3 text-lg font-semibold">Sources &amp; DOIs</h2>
+    <ul class="space-y-2 text-sm">
+      <li class="rounded border border-[color:var(--color-grid)] bg-white p-3">
+        <strong>Protocol manuscript</strong> — Muller Ferreira V. HEARTLAND Protocol v3.3.
+        <em>Cureus</em>, 2025.
+      </li>
+      <li class="rounded border border-[color:var(--color-grid)] bg-white p-3">
+        <strong>Zenodo deposit</strong> —
+        <a href="https://doi.org/10.5281/zenodo.18566403" target="_blank" rel="noopener">
+          doi.org/10.5281/zenodo.18566403
+        </a>
+      </li>
+      <li class="rounded border border-[color:var(--color-grid)] bg-white p-3">
+        <strong>OSF deposit</strong> —
+        <a href="https://doi.org/10.17605/OSF.IO/YUSGH" target="_blank" rel="noopener">
+          doi.org/10.17605/OSF.IO/YUSGH
+        </a>
+      </li>
+      <li class="rounded border border-[color:var(--color-grid)] bg-white p-3">
+        <strong>HEARTLAND app (interactive)</strong> —
+        <a href="https://heartlandprotocol.org" target="_blank" rel="noopener">heartlandprotocol.org</a>
+      </li>
+      <li class="rounded border border-[color:var(--color-grid)] bg-white p-3">
+        <strong>Source repository</strong> —
+        <a href="https://github.com/vickymuller-md/heartland-pocket-guide" target="_blank" rel="noopener">
+          github.com/vickymuller-md/heartland-pocket-guide
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="mb-3 text-lg font-semibold">Author</h2>
+    <p class="text-sm leading-relaxed">
+      <strong>Vicky Muller Ferreira, MD</strong> — ORCID
+      <a href="https://orcid.org/0009-0009-1099-5690" target="_blank" rel="noopener">
+        0009-0009-1099-5690
+      </a>.
+      Contact: <a href="mailto:vickymuller@heartlandprotocol.org">vickymuller@heartlandprotocol.org</a>.
+    </p>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="mb-3 text-lg font-semibold">How to cite</h2>
+    <pre class="overflow-x-auto rounded-lg border border-[color:var(--color-grid)] bg-white p-4 text-xs leading-relaxed"><code>Muller Ferreira V. Rural HF Pocket Guide — HEARTLAND Protocol v3.3 (PWA). 2026.
+doi:10.5281/zenodo.18566403.
+Available at: https://guide.heartlandprotocol.org</code></pre>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="mb-3 text-lg font-semibold">License</h2>
+    <p class="text-sm leading-relaxed">
+      Code and structure: <a href="https://github.com/vickymuller-md/heartland-pocket-guide/blob/main/LICENSE">MIT License</a>.
+      Clinical content is released for non-commercial educational and clinical reference use
+      with attribution to the HEARTLAND Protocol.
+    </p>
+  </section>
+</BaseLayout>

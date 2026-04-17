@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrintButton from '../components/PrintButton.astro';
+
+const cards: { file: string; title: string }[] = [
+  { file: '01_Pocket_Card_GDMT.jpg', title: 'GDMT Pocket Card' },
+  { file: '02_Pocket_Card_Red_Flags.jpg', title: 'Red Flags Pocket Card' },
+  { file: '03_Patient_Daily_Diary.jpg', title: 'Patient Daily Diary' },
+  { file: '04_Track_Assignment_Form.jpg', title: 'Track Assignment Form' },
+  { file: '05_Financial_Navigation_Tracker.jpg', title: 'Financial Navigation Tracker' },
+  { file: '06_Risk_Score_Reference.jpg', title: 'Risk Score Reference' },
+  { file: '07_Implementation_Tiers_Summary.jpg', title: 'Implementation Tiers Summary' },
+  { file: '08_SBAR_Handoff_Template.jpg', title: 'SBAR Handoff Template' },
+  { file: '09_TeachBack_Checklist.jpg', title: 'Teach-Back Checklist' },
+  { file: '10_Comorbidity_Quick_Reference.jpg', title: 'Comorbidity Quick Reference' },
+];
+---
+
+<BaseLayout
+  title="Pocket Card Gallery"
+  description="Ten HEARTLAND Protocol pocket cards — viewable and downloadable as JPG."
+  pageId="cards"
+>
+  <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Protocol figures</p>
+      <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Pocket Card Gallery</h1>
+      <p class="mt-2 max-w-2xl text-sm text-[color:var(--color-cool)]/80">
+        Ten cards for coat pocket, clinic wall, or patient handout. All are available offline
+        once installed. Click any card to open at full resolution — then long-press (mobile) or
+        right-click to save.
+      </p>
+    </div>
+    <PrintButton />
+  </header>
+
+  <ul class="grid gap-4 sm:grid-cols-2">
+    {cards.map((c) => (
+      <li class="overflow-hidden rounded-lg border border-[color:var(--color-grid)] bg-white">
+        <a href={`/figures/${c.file}`} target="_blank" rel="noopener" aria-label={`Open ${c.title} at full resolution`}>
+          <img
+            src={`/figures/${c.file}`}
+            alt={c.title}
+            loading="lazy"
+            decoding="async"
+            class="block w-full"
+          />
+        </a>
+        <div class="flex items-center justify-between gap-3 border-t border-[color:var(--color-grid)] bg-[color:var(--color-terminal-deep)] px-3 py-2 text-sm">
+          <span class="font-medium">{c.title}</span>
+          <a
+            href={`/figures/${c.file}`}
+            download
+            class="rounded border border-[color:var(--color-grid)] bg-white px-2 py-1 text-xs hover:bg-[color:var(--color-terminal)]"
+          >
+            Download
+          </a>
+        </div>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+interface Props {
+  pageId?: string;
+}
+const { pageId } = Astro.props;
+
+const links: { href: string; label: string; id: string }[] = [
+  { href: '/', label: 'Home', id: 'home' },
+  { href: '/gdmt', label: 'GDMT', id: 'gdmt' },
+  { href: '/red-flags', label: 'Red Flags', id: 'red-flags' },
+  { href: '/titration', label: 'Titration', id: 'titration' },
+  { href: '/rpm-billing', label: 'RPM Billing', id: 'rpm-billing' },
+  { href: '/risk-score', label: 'Risk Score', id: 'risk-score' },
+  { href: '/tiers', label: 'Tiers', id: 'tiers' },
+  { href: '/cards', label: 'Pocket Cards', id: 'cards' },
+  { href: '/about', label: 'About', id: 'about' },
+];
+---
+
+<nav class="sticky top-0 z-40 border-b border-[color:var(--color-grid)] bg-[color:var(--color-terminal-deep)]/95 backdrop-blur print:hidden">
+  <div class="mx-auto flex max-w-4xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <a href="/" class="flex items-center gap-2 font-semibold tracking-tight text-[color:var(--color-cool)] hover:text-[color:var(--color-alert-deep)]">
+      <span class="inline-block h-6 w-6 rounded-sm bg-[color:var(--color-alert)]" aria-hidden="true"></span>
+      <span>Pocket Guide</span>
+    </a>
+
+    <details class="relative md:hidden">
+      <summary class="flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded border border-[color:var(--color-grid)] px-3 text-sm font-medium">
+        Menu
+      </summary>
+      <ul class="absolute right-0 z-50 mt-2 min-w-56 space-y-1 rounded border border-[color:var(--color-grid)] bg-[color:var(--color-terminal)] p-2 shadow-lg">
+        {links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class:list={[
+                'block min-h-11 rounded px-3 py-2 text-sm hover:bg-[color:var(--color-terminal-deep)]',
+                pageId === l.id && 'bg-[color:var(--color-cool)] text-white hover:bg-[color:var(--color-cool)]',
+              ]}
+              aria-current={pageId === l.id ? 'page' : undefined}
+            >
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+
+    <ul class="hidden items-center gap-1 md:flex">
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class:list={[
+              'rounded px-2 py-1 text-sm font-medium hover:text-[color:var(--color-alert-deep)]',
+              pageId === l.id && 'bg-[color:var(--color-cool)] text-white hover:text-white',
+            ]}
+            aria-current={pageId === l.id ? 'page' : undefined}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

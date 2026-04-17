@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrintButton from '../components/PrintButton.astro';
+import { BILLING_CODES, REVENUE_POTENTIAL, TIM_HF2_EVIDENCE } from '../data/remote-monitoring';
+---
+
+<BaseLayout
+  title="RPM Billing Codes"
+  description="2025 CPT codes for Remote Patient Monitoring in heart failure — rates, requirements, and TIM-HF2 evidence."
+  pageId="rpm-billing"
+>
+  <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Module 5.3</p>
+      <h1 class="mt-1 text-2xl font-bold sm:text-3xl">RPM Billing Codes (2025)</h1>
+      <p class="mt-2 max-w-2xl text-sm text-[color:var(--color-cool)]/80">
+        Reimbursement ranges approximate — always confirm current MPFS rates for your region.
+        Revenue potential: <strong>{REVENUE_POTENTIAL}</strong>.
+      </p>
+    </div>
+    <PrintButton />
+  </header>
+
+  <section aria-labelledby="codes" class="mb-8">
+    <h2 id="codes" class="sr-only">Billing codes</h2>
+    <div class="overflow-x-auto rounded-lg border border-[color:var(--color-grid)] bg-white">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-[color:var(--color-terminal-deep)] text-left">
+          <tr>
+            <th class="p-3 font-semibold">Code</th>
+            <th class="p-3 font-semibold">Description</th>
+            <th class="p-3 font-semibold">Approx. reimbursement</th>
+          </tr>
+        </thead>
+        <tbody>
+          {BILLING_CODES.map((c) => (
+            <tr class="border-t border-[color:var(--color-grid)] align-top">
+              <td class="p-3 font-mono text-sm font-semibold text-[color:var(--color-cool)]">{c.code}</td>
+              <td class="p-3">{c.description}</td>
+              <td class="p-3 font-mono text-[color:var(--color-cool)]/80">{c.reimbursement}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="tim" class="mb-8 rounded-lg border border-[color:var(--color-grid)] bg-white p-5">
+    <h2 id="tim" class="text-base font-semibold">{TIM_HF2_EVIDENCE.name} ({TIM_HF2_EVIDENCE.year}) — key outcomes</h2>
+    <dl class="mt-3 divide-y divide-[color:var(--color-grid)]">
+      {TIM_HF2_EVIDENCE.outcomes.map((o) => (
+        <div class="flex flex-col gap-1 py-2 sm:flex-row sm:items-baseline sm:gap-4">
+          <dt class="text-sm font-semibold text-[color:var(--color-cool)] sm:w-56">{o.outcome}</dt>
+          <dd class="text-sm text-[color:var(--color-cool)]/80">{o.result}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section aria-labelledby="requirements" class="rounded-lg border border-[color:var(--color-grid)] bg-[color:var(--color-terminal-deep)] p-5">
+    <h2 id="requirements" class="text-sm font-semibold uppercase tracking-wide text-[color:var(--color-cool)]/70">
+      Documentation requirements (core)
+    </h2>
+    <ul class="mt-3 list-inside list-disc space-y-1 text-sm">
+      <li>Initial patient consent to RPM (once per year).</li>
+      <li>99454 requires ≥16 days of device data in a 30-day period.</li>
+      <li>99457 / 99458 require <strong>interactive communication</strong> (phone or video) during clinical time.</li>
+      <li>All time spent must be documented — total minutes by discipline.</li>
+      <li>RHC/FQHC: use <strong>G0511</strong> (consolidated rate) — cannot bill RPM codes separately.</li>
+    </ul>
+  </section>
+</BaseLayout>

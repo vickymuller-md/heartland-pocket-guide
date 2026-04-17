@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/*
+  HEARTLAND Pocket Guide — color tokens
+  Source of truth: heartland-app/app/globals.css (warm palette)
+*/
+@theme {
+  --color-terminal: #faf6ee;
+  --color-terminal-deep: #f2ecde;
+  --color-grid: #e3dcd0;
+  --color-cool: #0f2544;
+  --color-cool-soft: #1c365c;
+  --color-alert: #ff6b55;
+  --color-alert-deep: #e04a35;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  background-color: var(--color-terminal);
+  color: var(--color-cool);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+/* Smooth focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-alert);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Links inside prose content */
+.prose a {
+  color: var(--color-alert-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Collapsible <details> marker */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details > summary::after {
+  content: "+";
+  float: right;
+  font-weight: 600;
+  transition: transform 150ms ease;
+}
+details[open] > summary::after {
+  content: "−";
+}
+
+/* Print styles — each page should be a scannable single section */
+@media print {
+  nav,
+  .print\:hidden {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+  details {
+    break-inside: avoid;
+  }
+  details > summary {
+    pointer-events: none;
+  }
+  details:not([open]) > *:not(summary) {
+    display: block !important;
+  }
+  details:not([open]) {
+    open: true;
+  }
+  table {
+    break-inside: auto;
+  }
+  tr,
+  td,
+  th {
+    break-inside: avoid;
+  }
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+}

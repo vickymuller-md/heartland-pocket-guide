@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrintButton from '../components/PrintButton.astro';
+import {
+  HFREF_MEDICATIONS,
+  HFPEF_MEDICATIONS,
+  FINERENONE_SCENARIOS,
+  SAFETY_GATE_RULES,
+  NON_PHARMACOLOGICAL,
+  GENERIC_BRIDGE_ITEMS,
+  GENERIC_BRIDGE_PRINCIPLE,
+} from '../data/gdmt';
+
+const uptitrate = SAFETY_GATE_RULES.filter((r) => r.action === 'uptitrate');
+const hold = SAFETY_GATE_RULES.filter((r) => r.action === 'hold');
+---
+
+<BaseLayout title="GDMT Quick Reference" pageId="gdmt">
+  <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Module 2</p>
+      <h1 class="mt-1 text-2xl font-bold sm:text-3xl">GDMT Quick Reference</h1>
+      <p class="mt-2 max-w-2xl text-sm text-[color:var(--color-cool)]/80">
+        Guideline-directed medical therapy for HFrEF (quadruple) and HFpEF (evolving priority
+        ladder), with safety gates for titration.
+      </p>
+    </div>
+    <PrintButton />
+  </header>
+
+  <section aria-labelledby="hfref" class="mb-8">
+    <h2 id="hfref" class="mb-3 text-lg font-semibold">HFrEF (LVEF ≤40%) — Quadruple Therapy</h2>
+    <div class="overflow-x-auto rounded-lg border border-[color:var(--color-grid)] bg-white">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-[color:var(--color-terminal-deep)] text-left">
+          <tr>
+            <th class="p-3 font-semibold">Class</th>
+            <th class="p-3 font-semibold">Agent</th>
+            <th class="p-3 font-semibold">Start</th>
+            <th class="p-3 font-semibold">Target</th>
+            <th class="p-3 font-semibold">Safety gates</th>
+          </tr>
+        </thead>
+        <tbody>
+          {HFREF_MEDICATIONS.map((m) => (
+            <tr class="border-t border-[color:var(--color-grid)] align-top">
+              <td class="p-3 font-medium text-[color:var(--color-cool)]">{m.drugClass}</td>
+              <td class="p-3">{m.agent}</td>
+              <td class="p-3">{m.startingDose}</td>
+              <td class="p-3">{m.targetDose}</td>
+              <td class="p-3 text-[color:var(--color-cool)]/80">
+                {m.safetyGates.length === 0 ? '—' : m.safetyGates.join('; ')}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="hfpef" class="mb-8">
+    <h2 id="hfpef" class="mb-3 text-lg font-semibold">HFpEF (LVEF &gt;40%) — Evolving Evidence</h2>
+    <div class="overflow-x-auto rounded-lg border border-[color:var(--color-grid)] bg-white">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-[color:var(--color-terminal-deep)] text-left">
+          <tr>
+            <th class="p-3 font-semibold">#</th>
+            <th class="p-3 font-semibold">Agent</th>
+            <th class="p-3 font-semibold">Dose</th>
+            <th class="p-3 font-semibold">Evidence context</th>
+          </tr>
+        </thead>
+        <tbody>
+          {HFPEF_MEDICATIONS.map((m) => (
+            <tr class="border-t border-[color:var(--color-grid)] align-top">
+              <td class="p-3 font-medium text-[color:var(--color-cool)]">{m.priority}. {m.drugClass}</td>
+              <td class="p-3">{m.agent}</td>
+              <td class="p-3">{m.startingDose}</td>
+              <td class="p-3 text-[color:var(--color-cool)]/80">{m.evidenceContext ?? '—'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="safety-gates" class="mb-8 grid gap-4 sm:grid-cols-2">
+    <div class="rounded-lg border border-[color:var(--color-grid)] bg-white p-4">
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-[color:var(--color-cool)]/70">Uptitrate if</h3>
+      <ul class="mt-2 space-y-1 text-sm">
+        {uptitrate.map((r) => (
+          <li class="flex items-center gap-2">
+            <span class="inline-block h-2 w-2 rounded-full bg-[color:var(--color-success)]" aria-hidden="true"></span>
+            {r.condition}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="rounded-lg border border-[color:var(--color-alert)] bg-[color:var(--color-alert)]/5 p-4">
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-[color:var(--color-alert-deep)]">Hold if</h3>
+      <ul class="mt-2 space-y-1 text-sm">
+        {hold.map((r) => (
+          <li class="flex items-center gap-2">
+            <span class="inline-block h-2 w-2 rounded-full bg-[color:var(--color-alert)]" aria-hidden="true"></span>
+            {r.condition}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="finerenone" class="mb-8">
+    <h2 id="finerenone" class="mb-3 text-lg font-semibold">Finerenone vs. Spironolactone Decision Guide</h2>
+    <div class="overflow-x-auto rounded-lg border border-[color:var(--color-grid)] bg-white">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-[color:var(--color-terminal-deep)] text-left">
+          <tr>
+            <th class="p-3 font-semibold">Clinical scenario</th>
+            <th class="p-3 font-semibold">Suggested approach</th>
+            <th class="p-3 font-semibold">Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          {FINERENONE_SCENARIOS.map((s) => (
+            <tr class="border-t border-[color:var(--color-grid)] align-top">
+              <td class="p-3">{s.clinicalScenario}</td>
+              <td class="p-3 font-medium">{s.suggestedApproach}</td>
+              <td class="p-3 text-[color:var(--color-cool)]/80">{s.rationale}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="non-pharm" class="mb-8 grid gap-3 sm:grid-cols-3">
+    {Object.values(NON_PHARMACOLOGICAL).map((item) => (
+      <div class="rounded-lg border border-[color:var(--color-grid)] bg-white p-4">
+        <h3 class="text-sm font-semibold">{item.label}</h3>
+        <p class="mt-1 text-sm text-[color:var(--color-cool)]/80">{item.target}</p>
+      </div>
+    ))}
+  </section>
+
+  <section aria-labelledby="generic-bridge" class="mb-8">
+    <h2 id="generic-bridge" class="mb-2 text-lg font-semibold">Generic Bridge (~$15/month)</h2>
+    <p class="mb-3 text-sm text-[color:var(--color-cool)]/80">{GENERIC_BRIDGE_PRINCIPLE}</p>
+    <ul class="space-y-2 text-sm">
+      {GENERIC_BRIDGE_ITEMS.map((g) => (
+        <li class="flex items-baseline justify-between gap-4 rounded border border-[color:var(--color-grid)] bg-white px-3 py-2">
+          <span>
+            <strong class="text-[color:var(--color-cool)]">{g.drugClass}</strong>
+            {' — '}
+            {g.agent}
+            {g.note && <span class="text-[color:var(--color-cool)]/60"> ({g.note})</span>}
+          </span>
+          <span class="font-mono text-xs text-[color:var(--color-cool)]/70">{g.monthlyCost}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

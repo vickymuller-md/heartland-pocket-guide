@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrintButton from '../components/PrintButton.astro';
+import { RED_FLAG_ALERTS } from '../data/remote-monitoring';
+
+const severityStyle: Record<string, { card: string; badge: string; label: string }> = {
+  emergency: {
+    card: 'border-[color:var(--color-alert)] bg-[color:var(--color-alert)]/10',
+    badge: 'bg-[color:var(--color-alert)] text-white',
+    label: 'Emergency',
+  },
+  urgent: {
+    card: 'border-[color:var(--color-warning)] bg-[#fff7ed]',
+    badge: 'bg-[color:var(--color-warning)] text-white',
+    label: 'Urgent',
+  },
+  'same-day': {
+    card: 'border-[color:var(--color-success)] bg-[#f0fdf4]',
+    badge: 'bg-[color:var(--color-success)] text-white',
+    label: 'Same day',
+  },
+};
+---
+
+<BaseLayout
+  title="Red Flags Alert Card"
+  description="Heart failure red flag alerts — threshold values and required actions."
+  pageId="red-flags"
+>
+  <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Module 5.2</p>
+      <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Red Flags Alert Card</h1>
+      <p class="mt-2 max-w-2xl text-sm text-[color:var(--color-cool)]/80">
+        Escalate in descending order — emergency, urgent, same-day. These are nurse/MA-level triage
+        triggers that all require provider awareness.
+      </p>
+    </div>
+    <PrintButton />
+  </header>
+
+  <section aria-label="Red flag alerts">
+    <ul class="grid gap-3">
+      {RED_FLAG_ALERTS.map((a) => {
+        const s = severityStyle[a.severity];
+        return (
+          <li class:list={['flex flex-col gap-2 rounded-lg border-2 p-4 sm:flex-row sm:items-center sm:justify-between', s.card]}>
+            <div class="flex items-start gap-3">
+              <span class:list={['rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider', s.badge]}>
+                {s.label}
+              </span>
+              <div>
+                <p class="text-base font-semibold">{a.finding}</p>
+                <p class="mt-1 text-sm text-[color:var(--color-cool)]/80">→ {a.action}</p>
+              </div>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <section class="mt-8 rounded-lg border border-[color:var(--color-grid)] bg-white p-5">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-[color:var(--color-cool)]/70">
+      When in doubt
+    </h2>
+    <p class="mt-2 text-sm leading-relaxed">
+      Any chest pain, syncope, or new severe dyspnea: <strong>call 911</strong>. If the patient is
+      on GDMT and SBP &lt;90 with symptoms, <strong>hold ARNI/MRA and the diuretic dose</strong>,
+      call the provider immediately, and recheck vitals in 20 minutes.
+    </p>
+  </section>
+</BaseLayout>

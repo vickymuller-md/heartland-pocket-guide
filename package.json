@@ -1,0 +1,31 @@
+{
+  "name": "heartland-pocket-guide",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Rural HF Pocket Guide — offline-capable PWA clinical reference for the HEARTLAND Protocol.",
+  "license": "MIT",
+  "author": "Vicky Muller Ferreira, MD",
+  "homepage": "https://guide.heartlandprotocol.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vickymuller-md/heartland-pocket-guide.git"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@tailwindcss/vite": "^4.2.2",
+    "@vite-pwa/astro": "^1.2.0",
+    "astro": "^5.18.1",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "vite-plugin-pwa": "^1.2.0"
+  }
+}

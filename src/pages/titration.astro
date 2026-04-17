@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrintButton from '../components/PrintButton.astro';
+
+const algorithm: { trigger: string; action: string; emphasis: 'uptitrate' | 'hold' | 'reduce' }[] = [
+  { trigger: 'SBP ≥100 mmHg AND asymptomatic', action: 'UPTITRATE to next dose level', emphasis: 'uptitrate' },
+  { trigger: 'SBP 90–99 mmHg AND asymptomatic', action: 'HOLD current dose; reassess in 1 week', emphasis: 'hold' },
+  { trigger: 'SBP <90 mmHg OR symptomatic hypotension', action: 'REDUCE dose or hold; consider cardiology input', emphasis: 'reduce' },
+  { trigger: 'HR <50 (for beta-blockers)', action: 'Reduce dose; if symptomatic, hold', emphasis: 'reduce' },
+  { trigger: 'K+ 5.0–5.5', action: 'Reduce MRA/finerenone dose; recheck in 1 week', emphasis: 'reduce' },
+  { trigger: 'K+ >5.5', action: 'HOLD MRA/finerenone and ARNI; urgent recheck; dietary counseling', emphasis: 'hold' },
+  { trigger: 'Cr increase >30%', action: 'HOLD ARNI/MRA; evaluate; cardiology consult', emphasis: 'hold' },
+];
+
+const emphasisColor: Record<typeof algorithm[number]['emphasis'], string> = {
+  uptitrate: 'border-[color:var(--color-success)] bg-[#f0fdf4]',
+  hold: 'border-[color:var(--color-alert)] bg-[color:var(--color-alert)]/5',
+  reduce: 'border-[color:var(--color-warning)] bg-[#fff7ed]',
+};
+---
+
+<BaseLayout
+  title="Telephone Titration"
+  description="Condensed 5-step checklist for phone-based GDMT titration (Hozho Trial approach)."
+  pageId="titration"
+>
+  <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Module 3</p>
+      <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Telephone-Based Titration</h1>
+      <p class="mt-2 max-w-2xl text-sm text-[color:var(--color-cool)]/80">
+        Hozho Trial: 53% absolute increase in GDMT class addition at 30 days via voice telephone
+        calls, no smartphone required. Both tracks use the <strong>same</strong> clinical algorithm.
+      </p>
+    </div>
+    <PrintButton />
+  </header>
+
+  <section aria-labelledby="checklist" class="mb-8 rounded-lg border border-[color:var(--color-grid)] bg-white p-5">
+    <h2 id="checklist" class="text-base font-semibold">5-step phone-call checklist</h2>
+    <ol class="mt-3 space-y-3 text-sm leading-relaxed">
+      <li class="flex gap-3">
+        <span class="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[color:var(--color-cool)] font-mono text-xs text-white">1</span>
+        <div>
+          <strong>Confirm identity and consent.</strong> "Hi, this is [name] from [clinic]. I'm
+          calling for your weekly heart failure check. Is now a good time?"
+        </div>
+      </li>
+      <li class="flex gap-3">
+        <span class="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[color:var(--color-cool)] font-mono text-xs text-white">2</span>
+        <div>
+          <strong>Collect vitals.</strong> Ask for today's weight, BP, HR, symptoms (dyspnea at
+          rest, orthopnea, leg swelling, chest pain, syncope). Track A: data already synced.
+          Track B: patient reads off the device.
+        </div>
+      </li>
+      <li class="flex gap-3">
+        <span class="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[color:var(--color-cool)] font-mono text-xs text-white">3</span>
+        <div>
+          <strong>Apply the titration algorithm</strong> (see table below). Uptitrate, hold, or
+          reduce based on SBP, HR, and most recent K+ / Cr (check labs flowsheet).
+        </div>
+      </li>
+      <li class="flex gap-3">
+        <span class="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[color:var(--color-cool)] font-mono text-xs text-white">4</span>
+        <div>
+          <strong>Close the loop.</strong> Send the new prescription to the pharmacy and
+          teach-back confirm: "Tell me in your words — what are you taking, at what dose, and what
+          will make you call us?"
+        </div>
+      </li>
+      <li class="flex gap-3">
+        <span class="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[color:var(--color-cool)] font-mono text-xs text-white">5</span>
+        <div>
+          <strong>Document + schedule.</strong> Note the decision in the EHR with the trigger
+          values, schedule next call / labs, and escalate any red flag immediately (see Red Flags).
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="algorithm" class="mb-8">
+    <h2 id="algorithm" class="mb-3 text-lg font-semibold">Titration decision algorithm</h2>
+    <ul class="space-y-2">
+      {algorithm.map((r) => (
+        <li class:list={['rounded-lg border-2 p-3 text-sm sm:flex sm:items-center sm:justify-between sm:gap-4', emphasisColor[r.emphasis]]}>
+          <span class="font-medium">{r.trigger}</span>
+          <span class="mt-1 text-[color:var(--color-cool)]/90 sm:mt-0 sm:text-right">{r.action}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="tracks" class="grid gap-4 sm:grid-cols-2">
+    <div class="rounded-lg border border-[color:var(--color-grid)] bg-white p-4">
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-[color:var(--color-cool)]/70">Track A — Digital</h3>
+      <p class="mt-2 text-sm">Smartphone + Bluetooth devices, app-based daily entry, automated alerts, video visits.</p>
+    </div>
+    <div class="rounded-lg border border-[color:var(--color-grid)] bg-white p-4">
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-[color:var(--color-cool)]/70">Track B — Analog</h3>
+      <p class="mt-2 text-sm">Paper diary, standard devices (patient reads display), voice telephone calls, manual chart entry by staff.</p>
+    </div>
+  </section>
+</BaseLayout>

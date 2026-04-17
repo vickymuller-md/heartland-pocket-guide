@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections: { href: string; label: string; blurb: string; badge?: string }[] = [
+  {
+    href: '/gdmt',
+    label: 'GDMT Quick Reference',
+    blurb:
+      'Four drug classes for HFrEF and the HFpEF priority ladder, with starting doses, targets, and safety gates.',
+  },
+  {
+    href: '/red-flags',
+    label: 'Red Flags Alert Card',
+    blurb: 'Six vital-sign thresholds and the exact action required for each one.',
+    badge: 'Emergency',
+  },
+  {
+    href: '/titration',
+    label: 'Telephone Titration',
+    blurb:
+      'Condensed 5-step checklist for phone-based GDMT titration (Hozho Trial approach) — with safety gates per drug class.',
+  },
+  {
+    href: '/rpm-billing',
+    label: 'RPM Billing Codes',
+    blurb: 'CPT 99453, 99454, 99457, 99458 and the 2025 RTM/G-codes with approximate reimbursement.',
+  },
+  {
+    href: '/risk-score',
+    label: 'HEARTLAND Risk Score',
+    blurb: '10 variables, max 18 points. Tier thresholds and care pathways at a glance.',
+  },
+  {
+    href: '/tiers',
+    label: 'Implementation Tiers',
+    blurb: 'Tier 1 (Minimal) / Tier 2 (Standard) / Tier 3 (Advanced) — what changes across eight operational dimensions.',
+  },
+  {
+    href: '/cards',
+    label: 'Pocket Card Gallery',
+    blurb: 'All ten protocol JPGs — viewable and downloadable for a coat pocket or clinic wall.',
+  },
+  {
+    href: '/about',
+    label: 'About & Sources',
+    blurb: 'Cureus article, Zenodo/OSF deposits, the HEARTLAND app, and citation guidance.',
+  },
+];
+---
+
+<BaseLayout
+  title="Rural HF Pocket Guide"
+  description="Zero-login clinical reference pocket guide for rural heart failure management — HEARTLAND Protocol v3.3."
+  pageId="home"
+>
+  <header class="mb-10 mt-2">
+    <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">
+      HEARTLAND Protocol v3.3
+    </p>
+    <h1 class="mt-1 text-3xl font-bold leading-tight sm:text-4xl">
+      Rural HF Pocket Guide
+    </h1>
+    <p class="mt-4 max-w-2xl text-base leading-relaxed text-[color:var(--color-cool)]/80">
+      A zero-login reference for primary care clinicians managing heart failure in rural and
+      resource-limited US settings. Every section is a scannable clinical answer — no accounts,
+      no patient input, fully offline-capable once installed.
+    </p>
+    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+      <span class="rounded-full border border-[color:var(--color-grid)] bg-white px-3 py-1">Offline-ready</span>
+      <span class="rounded-full border border-[color:var(--color-grid)] bg-white px-3 py-1">Print-friendly</span>
+      <span class="rounded-full border border-[color:var(--color-grid)] bg-white px-3 py-1">Mobile-first</span>
+      <span class="rounded-full border border-[color:var(--color-grid)] bg-white px-3 py-1">No login</span>
+    </div>
+  </header>
+
+  <section aria-labelledby="sections-heading">
+    <h2 id="sections-heading" class="mb-4 text-sm font-semibold uppercase tracking-wide text-[color:var(--color-cool)]/70">
+      Quick navigation
+    </h2>
+    <ul class="grid gap-3 sm:grid-cols-2">
+      {sections.map((s) => (
+        <li>
+          <a
+            href={s.href}
+            class="flex h-full flex-col justify-between gap-2 rounded-lg border border-[color:var(--color-grid)] bg-white p-4 shadow-sm transition hover:border-[color:var(--color-alert)] hover:shadow-md"
+          >
+            <div class="flex items-start justify-between gap-2">
+              <span class="text-base font-semibold text-[color:var(--color-cool)]">{s.label}</span>
+              {s.badge && (
+                <span class="rounded bg-[color:var(--color-alert)]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[color:var(--color-alert-deep)]">
+                  {s.badge}
+                </span>
+              )}
+            </div>
+            <p class="text-sm leading-relaxed text-[color:var(--color-cool)]/75">{s.blurb}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="mt-12 rounded-lg border border-[color:var(--color-grid)] bg-[color:var(--color-terminal-deep)] p-5">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-[color:var(--color-cool)]/70">
+      Install on your phone
+    </h2>
+    <p class="mt-2 text-sm leading-relaxed">
+      This guide is a Progressive Web App. On iPhone: tap <strong>Share → Add to Home Screen</strong>.
+      On Android: open the browser menu and tap <strong>Install app</strong>. Once installed, it works
+      offline — useful for clinics with patchy coverage.
+    </p>
+  </section>
+</BaseLayout>

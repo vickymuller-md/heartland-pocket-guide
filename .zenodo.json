@@ -1,0 +1,39 @@
+{
+  "title": "Rural HF Pocket Guide — HEARTLAND Protocol v3.3 (PWA)",
+  "description": "Offline-capable, zero-login Progressive Web App exposing the essential clinical reference content of the HEARTLAND Protocol v3.3 for primary care clinicians managing heart failure in rural and resource-limited US settings. Reference-only. No patient data input.",
+  "creators": [
+    {
+      "name": "Muller Ferreira, Vicky",
+      "affiliation": "HEARTLAND Protocol",
+      "orcid": "0009-0009-1099-5690"
+    }
+  ],
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": [
+    "heart failure",
+    "rural health",
+    "clinical decision support",
+    "GDMT",
+    "remote patient monitoring",
+    "primary care",
+    "PWA",
+    "HEARTLAND Protocol"
+  ],
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.18566403",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.17605/OSF.IO/YUSGH",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-preprint"
+    }
+  ],
+  "communities": [],
+  "notes": "Content mirrors HEARTLAND Protocol v3.3 (Cureus, 2025). Code: MIT license. Clinical content: non-commercial educational and clinical reference use with attribution."
+}

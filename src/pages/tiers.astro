@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrintButton from '../components/PrintButton.astro';
+
+type TierKey = 'tier1' | 'tier2' | 'tier3';
+
+const rows: { component: string; tier1: string; tier2: string; tier3: string }[] = [
+  { component: 'Risk stratification', tier1: 'Score at discharge', tier2: 'Full CKM + Score', tier3: 'Full CKM + Score' },
+  {
+    component: 'GDMT',
+    tier1: '≥2 classes, prioritize SGLT2i + BB',
+    tier2: 'Target all classes in 14 days',
+    tier3: 'Rapid sequence per STRONG-HF',
+  },
+  {
+    component: 'Monitoring',
+    tier1: 'Track B (Analog)',
+    tier2: 'Dual-track (A/B)',
+    tier3: 'Track A with automated alerts',
+  },
+  {
+    component: 'Discharge education',
+    tier1: 'Condensed teach-back (3 domains)',
+    tier2: 'Full teach-back (8 domains)',
+    tier3: 'Full + CHW reinforcement',
+  },
+  {
+    component: 'Follow-up',
+    tier1: '48–72h call, 14-day visit',
+    tier2: '48h call, 7-day visit, weekly ×4',
+    tier3: '48h call, 7-day visit, weekly ×4+',
+  },
+  {
+    component: 'Staffing',
+    tier1: 'RN/MA + physician (MD)',
+    tier2: 'RN champion, MA, PharmD',
+    tier3: 'RN coordinator, PharmD, CHW',
+  },
+  {
+    component: 'CHW',
+    tier1: 'Alternative / family',
+    tier2: 'High-risk only',
+    tier3: 'Integrated team member',
+  },
+  {
+    component: 'Financial',
+    tier1: 'Generic bridge',
+    tier2: 'PAP pursuit + generic bridge',
+    tier3: 'Full navigation + 340B + PAP',
+  },
+];
+
+const meta: Record<TierKey, { label: string; tagline: string; border: string; badge: string }> = {
+  tier1: {
+    label: 'Tier 1 — Minimal',
+    tagline: 'Small clinics / CAH; solo provider; limited staff. Start here.',
+    border: 'border-[color:var(--color-success)]',
+    badge: 'bg-[color:var(--color-success)] text-white',
+  },
+  tier2: {
+    label: 'Tier 2 — Standard',
+    tagline: 'Regional clinic with PharmD / RN champion; hybrid monitoring.',
+    border: 'border-[color:var(--color-warning)]',
+    badge: 'bg-[color:var(--color-warning)] text-white',
+  },
+  tier3: {
+    label: 'Tier 3 — Advanced',
+    tagline: 'Multidisciplinary program with CHW integration and automated RPM.',
+    border: 'border-[color:var(--color-cool)]',
+    badge: 'bg-[color:var(--color-cool)] text-white',
+  },
+};
+---
+
+<BaseLayout
+  title="Implementation Tiers"
+  description="Tier 1 / Tier 2 / Tier 3 implementation summary — HEARTLAND Protocol Module 8."
+  pageId="tiers"
+>
+  <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Module 8.2</p>
+      <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Implementation Tiers</h1>
+      <p class="mt-2 max-w-2xl text-sm text-[color:var(--color-cool)]/80">
+        HEARTLAND is designed to scale: Tier 1 is the minimum viable bundle a solo clinic can
+        adopt; Tier 3 is a fully-staffed program. Pick the tier that matches your current staff
+        and resources — you can grow.
+      </p>
+    </div>
+    <PrintButton />
+  </header>
+
+  <section aria-labelledby="tier-cards" class="mb-8 grid gap-3 sm:grid-cols-3">
+    {(['tier1', 'tier2', 'tier3'] as const).map((k) => (
+      <article class:list={['rounded-lg border-2 bg-white p-4', meta[k].border]}>
+        <span class:list={['inline-block rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide', meta[k].badge]}>
+          {meta[k].label.split(' — ')[1]}
+        </span>
+        <h3 class="mt-2 text-base font-semibold">{meta[k].label.split(' — ')[0]}</h3>
+        <p class="mt-1 text-xs text-[color:var(--color-cool)]/80">{meta[k].tagline}</p>
+      </article>
+    ))}
+  </section>
+
+  <section aria-labelledby="tier-table">
+    <h2 id="tier-table" class="mb-3 text-lg font-semibold">What changes across tiers</h2>
+    <div class="overflow-x-auto rounded-lg border border-[color:var(--color-grid)] bg-white">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-[color:var(--color-terminal-deep)] text-left">
+          <tr>
+            <th class="p-3 font-semibold">Component</th>
+            <th class="p-3 font-semibold">Tier 1 (Minimal)</th>
+            <th class="p-3 font-semibold">Tier 2 (Standard)</th>
+            <th class="p-3 font-semibold">Tier 3 (Advanced)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr class="border-t border-[color:var(--color-grid)] align-top">
+              <td class="p-3 font-medium text-[color:var(--color-cool)]">{r.component}</td>
+              <td class="p-3 text-[color:var(--color-cool)]/85">{r.tier1}</td>
+              <td class="p-3 text-[color:var(--color-cool)]/85">{r.tier2}</td>
+              <td class="p-3 text-[color:var(--color-cool)]/85">{r.tier3}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>

@@ -77,6 +77,12 @@ site renders to static HTML + assets. Service worker precaches everything.
 > Muller Ferreira V. Rural HF Pocket Guide — HEARTLAND Protocol v3.3 (PWA). 2026.
 > doi:10.5281/zenodo.18566403. Available at https://guide.heartlandprotocol.org.
 
+## Software preservation
+
+Software Heritage snapshot (archived 2026-08-25): [`swh:1:snp:6f3d4e96dcde1ebeffa2b7e05865facf6c87a6e5`](https://archive.softwareheritage.org/swh:1:snp:6f3d4e96dcde1ebeffa2b7e05865facf6c87a6e5/)
+
+This persistent SWHID identifies the repository snapshot captured on that date; archival does not imply endorsement or validation.
+
 ## Disclaimer
 
 This tool is designed for healthcare professionals as a clinical decision support resource.

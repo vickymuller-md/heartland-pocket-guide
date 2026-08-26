@@ -32,6 +32,12 @@
       "identifier": "10.17605/OSF.IO/YUSGH",
       "relation": "isSupplementTo",
       "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "https://archive.softwareheritage.org/swh:1:snp:6f3d4e96dcde1ebeffa2b7e05865facf6c87a6e5/",
+      "relation": "isSupplementedBy",
+      "resource_type": "software",
+      "scheme": "url"
     }
   ],
   "communities": [],

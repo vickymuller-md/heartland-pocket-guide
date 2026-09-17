@@ -1,6 +1,8 @@
 // MIRROR — source of truth: heartland-app/lib/risk-score/constants.ts
 // Protocol v3.3 Module 1 (Table 1). Do not edit without syncing upstream.
 
+// Three tiers only: there is no `very_high` tier, because the scoring rule
+// cannot produce one (adjudication 3, section 2.5, decision R11).
 export type RiskTier = 'low' | 'moderate' | 'high';
 
 export interface RiskVariable {
@@ -134,11 +136,11 @@ export const COMPARISON_TABLE_DATA: Array<{
 }> = [
   { characteristic: 'Number of variables', maggic: '13', gwtgHf: '7', shfm: '24+', heartland: '10' },
   {
-    characteristic: 'Outcome predicted',
+    characteristic: 'Outcome addressed',
     maggic: '1-3 year mortality',
     gwtgHf: 'In-hospital mortality',
     shfm: '1-5 year survival',
-    heartland: 'Readmission risk + monitoring intensity',
+    heartland: 'Monitoring intensity assignment (not an event prediction)',
   },
   { characteristic: 'Distance to care', maggic: 'No', gwtgHf: 'No', shfm: 'No', heartland: 'Yes' },
   { characteristic: 'Social support', maggic: 'No', gwtgHf: 'No', shfm: 'No', heartland: 'Yes' },
@@ -155,7 +157,7 @@ export const COMPARISON_TABLE_DATA: Array<{
     maggic: 'Validated (39,372 pts)',
     gwtgHf: 'Validated (hospital registry)',
     shfm: 'Validated (multiple cohorts)',
-    heartland: 'Pragmatic heuristic (not yet validated)',
+    heartland: 'Non-validated heuristic (no derivation/validation cohort)',
   },
   {
     characteristic: 'Intended use',

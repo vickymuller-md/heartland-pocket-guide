@@ -6,7 +6,8 @@
 
 **Live site:** https://guide.heartlandprotocol.org
 **Author:** Vicky Muller Ferreira, MD
-**License:** MIT
+**License:** dual — code MIT ([`LICENSE`](LICENSE)); clinical content CC BY-NC 4.0
+([`LICENSE-CONTENT.md`](LICENSE-CONTENT.md))
 **This guide's DOI:** Zenodo [10.5281/zenodo.19634993](https://doi.org/10.5281/zenodo.19634993)
 (v0.1.0; all versions: [10.5281/zenodo.19634992](https://doi.org/10.5281/zenodo.19634992))
 **Related DOIs:** HEARTLAND Implementation Toolkit V3.3 —

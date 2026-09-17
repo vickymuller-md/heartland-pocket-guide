@@ -282,7 +282,11 @@ export const SAFETY_GATE_RULES: SafetyGateRule[] = [
 ];
 
 export const NON_PHARMACOLOGICAL = {
-  sodium: { label: 'Dietary Sodium', target: '<2,000 mg/day' },
+  sodium: {
+    label: 'Dietary Sodium',
+    target:
+      'Individual target set by the care team and written in the care plan; less than 2,000 mg/day is a commonly used target',
+  },
   activity: {
     label: 'Physical Activity',
     target:

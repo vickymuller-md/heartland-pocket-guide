@@ -20,9 +20,9 @@ const rows: { component: string; tier1: string; tier2: string; tier3: string }[]
   },
   {
     component: 'Discharge education',
-    tier1: 'Condensed teach-back (3 domains)',
-    tier2: 'Full teach-back (8 domains)',
-    tier3: 'Full + CHW reinforcement',
+    tier1: 'All 8 domains; teach-back in short printed sessions',
+    tier2: 'All 8 domains; teach-back in clinic with RN / PharmD support',
+    tier3: 'All 8 domains; teach-back plus CHW reinforcement',
   },
   {
     component: 'Follow-up',
@@ -126,5 +126,10 @@ const meta: Record<TierKey, { label: string; tagline: string; border: string; ba
         </tbody>
       </table>
     </div>
+    <p class="mt-3 text-xs text-[color:var(--color-cool)]/60">
+      All implementation tiers assess and address clinically relevant education needs. The resource
+      tier determines delivery format and support, not the exclusion of necessary content. Dietary
+      and fluid advice follows individual clinical indications and the care plan.
+    </p>
   </section>
 </BaseLayout>

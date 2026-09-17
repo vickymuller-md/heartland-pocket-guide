@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PrintButton from '../components/PrintButton.astro';
+import { POTASSIUM_BANDS, MRA_MONITORING } from '../data/gdmt';
 
 const algorithm: { trigger: string; action: string; emphasis: 'uptitrate' | 'hold' | 'reduce' }[] = [
   { trigger: 'SBP ≥100 mmHg AND asymptomatic', action: 'UPTITRATE to next dose level', emphasis: 'uptitrate' },
   { trigger: 'SBP 90–99 mmHg AND asymptomatic', action: 'HOLD current dose; reassess in 1 week', emphasis: 'hold' },
   { trigger: 'SBP <90 mmHg OR symptomatic hypotension', action: 'REDUCE dose or hold; consider cardiology input', emphasis: 'reduce' },
   { trigger: 'HR <50 (for beta-blockers)', action: 'Reduce dose; if symptomatic, hold', emphasis: 'reduce' },
-  { trigger: 'K+ 5.0–5.5', action: 'Reduce MRA/finerenone dose; recheck in 1 week', emphasis: 'reduce' },
-  { trigger: 'K+ >5.5', action: 'HOLD MRA/finerenone and ARNI; urgent recheck; dietary counseling', emphasis: 'hold' },
+  { trigger: 'K+ ≥5.0', action: 'Apply the potassium table below — the action differs for finerenone and for steroidal MRA', emphasis: 'reduce' },
+  { trigger: 'K+ ≥6.0', action: 'Withhold the MRA at any dose and the ARNI; urgent recheck and treatment', emphasis: 'hold' },
   { trigger: 'Cr increase >30%', action: 'HOLD ARNI/MRA; evaluate; cardiology consult', emphasis: 'hold' },
 ];
 
@@ -89,6 +90,50 @@ const emphasisColor: Record<typeof algorithm[number]['emphasis'], string> = {
         </li>
       ))}
     </ul>
+  </section>
+
+  <section aria-labelledby="potassium" class="mb-8">
+    <h2 id="potassium" class="mb-3 text-lg font-semibold">Potassium bands — finerenone vs. steroidal MRA</h2>
+    <div class="overflow-x-auto rounded-lg border border-[color:var(--color-grid)] bg-white">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-[color:var(--color-terminal-deep)] text-left">
+          <tr>
+            <th class="p-3 font-semibold">Serum potassium</th>
+            <th class="p-3 font-semibold">Finerenone</th>
+            <th class="p-3 font-semibold">Spironolactone / eplerenone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {POTASSIUM_BANDS.map((b) => (
+            <tr class="border-t border-[color:var(--color-grid)] align-top">
+              <td class="p-3 font-mono text-sm font-semibold text-[color:var(--color-cool)]">{b.range}</td>
+              <td class="p-3">{b.finerenone}</td>
+              <td class="p-3 text-[color:var(--color-cool)]/80">{b.steroidalMra}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-2 text-xs text-[color:var(--color-cool)]/60">
+      Finerenone column: KERENDIA label Table 3 (heart failure, LVEF ≥40%) — the restart dose is
+      10 mg once potassium is below 5.5. Steroidal MRA column: ALDACTONE label 5.1 and 2022
+      AHA/ACC/HFSA (COR 3: Harm — discontinue if potassium cannot be maintained below 5.5).
+    </p>
+  </section>
+
+  <section aria-labelledby="monitoring" class="mb-8">
+    <h2 id="monitoring" class="mb-3 text-lg font-semibold">Laboratory monitoring</h2>
+    <dl class="divide-y divide-[color:var(--color-grid)] rounded-lg border border-[color:var(--color-grid)] bg-white px-4">
+      {MRA_MONITORING.map((m) => (
+        <div class="flex flex-col gap-1 py-3 sm:flex-row sm:gap-4">
+          <dt class="text-sm font-semibold text-[color:var(--color-cool)] sm:w-56 sm:flex-none">{m.drug}</dt>
+          <dd class="text-sm text-[color:var(--color-cool)]/80">
+            {m.schedule}
+            <span class="mt-1 block text-xs text-[color:var(--color-cool)]/60">{m.source}</span>
+          </dd>
+        </div>
+      ))}
+    </dl>
   </section>
 
   <section aria-labelledby="tracks" class="grid gap-4 sm:grid-cols-2">

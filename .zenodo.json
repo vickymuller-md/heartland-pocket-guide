@@ -24,6 +24,11 @@
   "language": "eng",
   "related_identifiers": [
     {
+      "identifier": "10.5281/zenodo.19101219",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-report"
+    },
+    {
       "identifier": "10.7759/cureus.104817",
       "relation": "isSupplementTo",
       "resource_type": "publication-article"
@@ -41,5 +46,5 @@
     }
   ],
   "communities": [],
-  "notes": "Content mirrors HEARTLAND Protocol v3.3 (Cureus, 2025). Code: MIT license. Clinical content: non-commercial educational and clinical reference use with attribution."
+  "notes": "Content mirrors the HEARTLAND Implementation Toolkit V3.3 (Zenodo, 2026, doi:10.5281/zenodo.19101219), which is described in a separate peer-reviewed technical report in Cureus (2026, doi:10.7759/cureus.104817). Code: MIT license. Clinical content: non-commercial educational and clinical reference use with attribution."
 }

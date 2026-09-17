@@ -7,7 +7,11 @@
 **Live site:** https://guide.heartlandprotocol.org
 **Author:** Vicky Muller Ferreira, MD
 **License:** MIT
-**Related DOIs:** Zenodo [10.5281/zenodo.19101219](https://doi.org/10.5281/zenodo.19101219)
+**This guide's DOI:** Zenodo [10.5281/zenodo.19634993](https://doi.org/10.5281/zenodo.19634993)
+(v0.1.0; all versions: [10.5281/zenodo.19634992](https://doi.org/10.5281/zenodo.19634992))
+**Related DOIs:** HEARTLAND Implementation Toolkit V3.3 —
+[10.5281/zenodo.19101219](https://doi.org/10.5281/zenodo.19101219)
+| Cureus article — [10.7759/cureus.104817](https://doi.org/10.7759/cureus.104817)
 | OSF [10.17605/OSF.IO/YUSGH](https://doi.org/10.17605/OSF.IO/YUSGH)
 
 ## What this is
@@ -74,8 +78,8 @@ site renders to static HTML + assets. Service worker precaches everything.
 
 ## How to cite
 
-> Muller Ferreira V. Rural HF Pocket Guide — HEARTLAND Protocol v3.3 (PWA). 2026.
-> doi:10.5281/zenodo.19101219. Available at https://guide.heartlandprotocol.org.
+> Muller Ferreira V. Rural HF Pocket Guide (Version 0.1.0) [software]. Zenodo; 2026.
+> doi:10.5281/zenodo.19634993. Available at https://guide.heartlandprotocol.org.
 
 ## Software preservation
 

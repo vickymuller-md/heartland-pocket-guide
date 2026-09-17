@@ -183,8 +183,9 @@ export const FINERENONE_SCENARIOS: FinerenoneScenario[] = [
   },
   {
     clinicalScenario: 'Significant cost barrier',
-    suggestedApproach: 'Spironolactone',
-    rationale: '~$4/month generic vs. ~$500/month',
+    suggestedApproach: 'Spironolactone, with the efficacy caveat above',
+    rationale:
+      'Verified 2026-09-17: generic spironolactone about $6-13/month; finerenone has no US generic and lists from about $706.80 per 30 tablets. Cost alone does not make the two interchangeable',
   },
   {
     clinicalScenario: 'HFrEF',
@@ -294,11 +295,34 @@ export const NON_PHARMACOLOGICAL = {
 } as const;
 
 export const GENERIC_BRIDGE_ITEMS: GenericBridgeItem[] = [
-  { drugClass: 'ACE inhibitor OR ARB', agent: 'Lisinopril or Losartan', monthlyCost: '$4/month' },
-  { drugClass: 'Beta-blocker', agent: 'Carvedilol generic', monthlyCost: '$4/month' },
-  { drugClass: 'MRA', agent: 'Spironolactone generic', monthlyCost: '$4/month' },
-  { drugClass: 'Metformin', agent: 'Metformin', monthlyCost: '$4/month', note: 'if diabetic/prediabetic' },
+  {
+    drugClass: 'ACE inhibitor OR ARB',
+    agent: 'Lisinopril or Losartan',
+    monthlyCost: '$5-9/month',
+    note: '$9 tier on the Walmart list; about $5.40-$5.50 at Cost Plus Drugs',
+  },
+  {
+    drugClass: 'Beta-blocker',
+    agent: 'Carvedilol generic',
+    monthlyCost: '~$6/month',
+    note: 'not on the Walmart list at any tier; about $5.66 at Cost Plus Drugs',
+  },
+  {
+    drugClass: 'MRA',
+    agent: 'Spironolactone generic',
+    monthlyCost: '$6-9/month',
+    note: '25 mg is not on the Walmart list; about $5.90 at Cost Plus Drugs',
+  },
+  {
+    drugClass: 'Metformin',
+    agent: 'Metformin',
+    monthlyCost: '$5-9/month',
+    note: 'if diabetic/prediabetic',
+  },
 ];
 
 export const GENERIC_BRIDGE_PRINCIPLE =
   'Generic therapy is superior to NO therapy. Never delay treatment while waiting for paperwork.';
+
+export const GENERIC_BRIDGE_PRICE_NOTE =
+  'Prices verified 2026-09-17 against the Walmart $4/$9 program list (effective 03/24/2025) and Cost Plus Drugs: about $28 for the four-drug set at Cost Plus Drugs (plus shipping) and about $36 at Walmart, which does not list carvedilol. SGLT2i are not part of the bridge. Prices change — confirm locally before quoting them to a patient.';

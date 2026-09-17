@@ -30,7 +30,7 @@ Nine pages, all derived from `HEARTLAND_Protocol v3.3`:
 2. GDMT quick reference — HFrEF quadruple therapy + HFpEF priority ladder
 3. Red flags alert card — six triggers with required actions
 4. Telephone titration — 5-step checklist + decision algorithm
-5. RPM billing codes (2025) — CPT 99453/99454/99457/99458 + RTM + G0511
+5. RPM billing codes (CY2026) — CPT 99445/99453/99454/99457/99458/99470 + RTM
 6. HEARTLAND risk score — 10 variables, tier thresholds, care pathways
 7. Implementation tiers — Tier 1 / Tier 2 / Tier 3 across 8 operational dimensions
 8. Pocket card gallery — 10 protocol figures (JPG)

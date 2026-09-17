@@ -67,16 +67,25 @@ export const RED_FLAG_ALERTS: RedFlagAlert[] = [
 ];
 
 export const BILLING_CODES: BillingCode[] = [
-  { code: '99453', description: 'RPM initial setup', reimbursement: '$19-21' },
-  { code: '99454', description: 'RPM monthly device (≥16 days data)', reimbursement: '$48-55' },
-  { code: '99457', description: 'RPM first 20 min management', reimbursement: '$48-52' },
-  { code: '99458', description: 'RPM additional 20 min', reimbursement: '$38-42' },
-  { code: '98975-98981', description: 'RTM codes (similar structure)', reimbursement: 'Similar range' },
-  { code: 'G0511', description: 'RHC/FQHC Comprehensive Care Management', reimbursement: 'Consolidated' },
+  { code: '99453', description: 'RPM setup and patient education — one-time, not monthly', reimbursement: '$21.71' },
+  { code: '99445', description: 'RPM device supply, 2-15 days of data in 30 days (new in CY2026)', reimbursement: '$52.11' },
+  { code: '99454', description: 'RPM device supply, 16-30 days of data in 30 days', reimbursement: '$52.11' },
+  { code: '99470', description: 'RPM treatment management, first 10 min (new in CY2026)', reimbursement: '$26.05' },
+  { code: '99457', description: 'RPM treatment management, first 20 min', reimbursement: '$51.77' },
+  { code: '99458', description: 'RPM treatment management, each additional 20 min', reimbursement: '$41.42' },
+  {
+    code: '98984 / 98985 / 98979',
+    description: 'RTM device supply 2-15 days; RTM device supply 16-30 days; RTM management first 10 min',
+    reimbursement: '$52.11 / $51.44 / $26.39',
+  },
+  { code: '98978 / 98986', description: 'RTM device supply, cognitive behavioral therapy', reimbursement: 'Status C — not paid under the PFS' },
 ];
 
+export const BILLING_CODES_NOTE =
+  'National non-facility amounts calculated from the CMS CY2026 PFS relative value file (released 30/06/2026) at the non-QP conversion factor of $33.40; verified 2026-09-17. Local rates differ — confirm current MPFS amounts for your region. The 2-15 day and 16-30 day device codes are alternatives, not additive; the same applies to the first-10-minute and first-20-minute management codes. G0511 and G0512 no longer exist in the CY2026 PFS: RHC/FQHC bill the individual codes plus APCM (G0556 $16.37, G0557 $53.78, G0558 $117.24).';
+
 export const REVENUE_POTENTIAL =
-  '$150-200/month per high-risk patient with full capture';
+  'Facility revenue, not clinician income: the base case is $103.88/month (99454 + 99457). The $150-200 range requires 40-60 minutes of billed management every month (99454 + 99457 + one 99458 = $145.30; + two = $186.72), and excludes 99453, which is a one-time setup.';
 
 export const TIM_HF2_EVIDENCE: TimHf2Evidence = {
   name: 'TIM-HF2',

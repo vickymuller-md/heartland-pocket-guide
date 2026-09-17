@@ -1,21 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PrintButton from '../components/PrintButton.astro';
-import { BILLING_CODES, REVENUE_POTENTIAL, TIM_HF2_EVIDENCE } from '../data/remote-monitoring';
+import {
+  BILLING_CODES,
+  BILLING_CODES_NOTE,
+  REVENUE_POTENTIAL,
+  TIM_HF2_EVIDENCE,
+} from '../data/remote-monitoring';
 ---
 
 <BaseLayout
   title="RPM Billing Codes"
-  description="2025 CPT codes for Remote Patient Monitoring in heart failure — rates, requirements, and TIM-HF2 evidence."
+  description="CY2026 CPT codes for Remote Patient Monitoring in heart failure — amounts, requirements, and TIM-HF2 evidence."
   pageId="rpm-billing"
 >
   <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
     <div>
       <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Module 5.3</p>
-      <h1 class="mt-1 text-2xl font-bold sm:text-3xl">RPM Billing Codes (2025)</h1>
+      <h1 class="mt-1 text-2xl font-bold sm:text-3xl">RPM Billing Codes (CY2026)</h1>
       <p class="mt-2 max-w-2xl text-sm text-[color:var(--color-cool)]/80">
-        Reimbursement ranges approximate — always confirm current MPFS rates for your region.
-        Revenue potential: <strong>{REVENUE_POTENTIAL}</strong>.
+        {REVENUE_POTENTIAL}
       </p>
     </div>
     <PrintButton />
@@ -43,6 +47,7 @@ import { BILLING_CODES, REVENUE_POTENTIAL, TIM_HF2_EVIDENCE } from '../data/remo
         </tbody>
       </table>
     </div>
+    <p class="mt-2 text-xs text-[color:var(--color-cool)]/60">{BILLING_CODES_NOTE}</p>
   </section>
 
   <section aria-labelledby="tim" class="mb-8 rounded-lg border border-[color:var(--color-grid)] bg-white p-5">
@@ -63,10 +68,10 @@ import { BILLING_CODES, REVENUE_POTENTIAL, TIM_HF2_EVIDENCE } from '../data/remo
     </h2>
     <ul class="mt-3 list-inside list-disc space-y-1 text-sm">
       <li>Initial patient consent to RPM (once per year).</li>
-      <li>99454 requires ≥16 days of device data in a 30-day period.</li>
+      <li>99454 requires <strong>16–30 days</strong> of device data in a 30-day period; 99445 covers 2–15 days. They are alternatives, never both.</li>
       <li>99457 / 99458 require <strong>interactive communication</strong> (phone or video) during clinical time.</li>
       <li>All time spent must be documented — total minutes by discipline.</li>
-      <li>RHC/FQHC: use <strong>G0511</strong> (consolidated rate) — cannot bill RPM codes separately.</li>
+      <li>RHC/FQHC: <strong>G0511 and G0512 were removed from the CY2026 PFS</strong> — bill the individual RPM codes plus APCM (G0556 / G0557 / G0558).</li>
     </ul>
   </section>
 </BaseLayout>

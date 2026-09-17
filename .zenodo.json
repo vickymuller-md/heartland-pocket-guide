@@ -14,7 +14,7 @@
   "keywords": [
     "heart failure",
     "rural health",
-    "clinical decision support",
+    "implementation toolkit",
     "GDMT",
     "remote patient monitoring",
     "primary care",
@@ -24,7 +24,7 @@
   "language": "eng",
   "related_identifiers": [
     {
-      "identifier": "10.5281/zenodo.18566403",
+      "identifier": "10.7759/cureus.104817",
       "relation": "isSupplementTo",
       "resource_type": "publication-article"
     },

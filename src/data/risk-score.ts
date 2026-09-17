@@ -162,6 +162,6 @@ export const COMPARISON_TABLE_DATA: Array<{
     maggic: 'Prognostic',
     gwtgHf: 'Prognostic',
     shfm: 'Prognostic',
-    heartland: 'Clinical decision support',
+    heartland: 'Implementation support',
   },
 ];

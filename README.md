@@ -8,9 +8,9 @@
 **Author:** Vicky Muller Ferreira, MD
 **License:** dual — code MIT ([`LICENSE`](LICENSE)); clinical content CC BY-NC 4.0
 ([`LICENSE-CONTENT.md`](LICENSE-CONTENT.md))
-**Last published guide archive:** Zenodo [10.5281/zenodo.23074675](https://doi.org/10.5281/zenodo.23074675)
-(v0.2.1; all versions: [10.5281/zenodo.19634992](https://doi.org/10.5281/zenodo.19634992))
-The current v0.2.2 source adds operational clarification and local-readiness material; its successor archive is pending publication.
+**Published guide archive:** Zenodo [10.5281/zenodo.23076500](https://doi.org/10.5281/zenodo.23076500)
+(v0.2.2; all versions: [10.5281/zenodo.19634992](https://doi.org/10.5281/zenodo.19634992))
+The v0.2.2 archive identifies source commit `3afd6e5`; later citation-only updates do not replace that immutable source.
 **Related DOIs:** HEARTLAND Implementation Toolkit V3.4.1 —
 [10.5281/zenodo.23076249](https://doi.org/10.5281/zenodo.23076249)
 | Cureus article — [10.7759/cureus.104817](https://doi.org/10.7759/cureus.104817)
@@ -88,10 +88,10 @@ site renders to static HTML + assets. Service worker precaches everything.
 
 ## How to cite
 
-The citation below identifies the immutable v0.2.1 source archive, not the newer v0.2.2 source. See [RELEASE_NOTES_v0.2.2.md](RELEASE_NOTES_v0.2.2.md) for the operational clarifications. Historical versions remain preserved in Zenodo.
+The citation below identifies the immutable v0.2.2 source archive. See [RELEASE_NOTES_v0.2.2.md](RELEASE_NOTES_v0.2.2.md) for the operational clarifications. Historical versions remain preserved in Zenodo.
 
-> Muller Ferreira V. Rural HF Pocket Guide (Version 0.2.1) [software]. Zenodo; 2026.
-> doi:10.5281/zenodo.23074675. Available at https://guide.heartlandprotocol.org.
+> Muller Ferreira V. Rural HF Pocket Guide (Version 0.2.2) [software]. Zenodo; 2026.
+> doi:10.5281/zenodo.23076500. Available at https://guide.heartlandprotocol.org.
 
 ## Software preservation
 

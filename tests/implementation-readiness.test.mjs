@@ -3,6 +3,13 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
+test('published citation identifies the verified archive without relabeling its source', () => {
+  const html = read('dist/about/index.html');
+  assert.match(html, /https:\/\/doi.org\/10.5281\/zenodo.23076500/);
+  assert.match(html, /Version 0.2.2/);
+  assert.match(html, /source commit 3afd6e5/);
+  assert.doesNotMatch(html, /23074675|pending publication/);
+});
 test('compact navigation keeps readiness reachable without the wide external CTA', () => {
   const source = read('src/components/Nav.astro');
   assert.match(source, /href: '\/readiness'/);

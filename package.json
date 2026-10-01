@@ -11,6 +11,7 @@
     "url": "https://github.com/vickymuller-md/heartland-pocket-guide.git"
   },
   "scripts": {
+    "test": "npm run build && node --experimental-strip-types --test tests/*.test.mjs",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",

@@ -1,5 +1,5 @@
 // MIRROR — source of truth: heartland-app/lib/gdmt/constants.ts
-// Protocol v3.3 Module 2. Do not edit without syncing upstream.
+// Module 2 reference checked September 30, 2026; V3.4 remains a candidate.
 
 export type EvidenceLevel = 'established' | 'emerging' | 'pragmatic';
 export type HfType = 'hfref' | 'hfpef';
@@ -123,7 +123,7 @@ export const HFPEF_MEDICATIONS: Medication[] = [
     targetDose: '10 mg daily',
     safetyGates: [],
     evidenceLevel: 'established',
-    evidenceContext: 'Class IIa per 2022 AHA/ACC/HFSA. EMPEROR-Preserved + DELIVER.',
+    evidenceContext: '2022 AHA/ACC/HFSA Class IIa; ESC 2023 Class I, Level A. EMPEROR-Preserved and DELIVER enrolled LVEF >40% and reduced their primary composite of worsening HF events/HF hospitalization and CV death, mainly through fewer HF events. Neither trial established a significant reduction in CV death alone.',
     priority: 1,
   },
   {
@@ -135,8 +135,9 @@ export const HFPEF_MEDICATIONS: Medication[] = [
     targetDose:
       'Finerenone 40 mg daily if eGFR >=60 at initiation; 20 mg daily if eGFR >=25 to <60 / Spironolactone 25-50 mg daily',
     safetyGates: [
-      'Finerenone: do not initiate if K+ >5.0',
-      'Finerenone: initiation not recommended below eGFR 25',
+      'Finerenone: do not initiate if K+ >5.0; exactly 5.0 is permitted',
+      'Finerenone: initiation not recommended if eGFR <25',
+      'Spironolactone: eGFR >30 and K+ <5.0 (2022 AHA/ACC/HFSA)',
     ],
     evidenceLevel: 'established',
     evidenceContext:
@@ -179,13 +180,13 @@ export const FINERENONE_SCENARIOS: FinerenoneScenario[] = [
     clinicalScenario: 'History of hyperkalemia on MRA',
     suggestedApproach: 'No automatic preference; reassess risk and monitoring',
     rationale:
-      'Finerenone can also cause hyperkalemia: in FINEARTS-HF, K+ >5.5 mmol/L was more frequent than with placebo (HR 2.16, 95% CI 1.83-2.56). No head-to-head trial against spironolactone in HF',
+      'FINEARTS-HF found more hyperkalemia with finerenone than placebo, not spironolactone. ARTS compared finerenone with open-label spironolactone in a short phase II HFrEF/CKD study, not a comparative clinical-outcomes trial (Pitt et al., 2013; doi:10.1093/eurheartj/eht187). No universal preferred agent follows from these comparisons.',
   },
   {
     clinicalScenario: 'Significant cost barrier',
     suggestedApproach: 'Spironolactone, with the efficacy caveat above',
     rationale:
-      'Verified 2026-09-17: generic spironolactone about $6-13/month; finerenone has no US generic and lists from about $706.80 per 30 tablets. Cost alone does not make the two interchangeable',
+      'Compare locally verified out-of-pocket costs and access for clinically appropriate agents. Historical price snapshots are not current quotes, and cost alone does not make the agents interchangeable.',
   },
   {
     clinicalScenario: 'HFrEF',
@@ -272,20 +273,23 @@ export const MRA_MONITORING: MonitoringRule[] = [
 ];
 
 export const SAFETY_GATE_RULES: SafetyGateRule[] = [
-  { condition: 'SBP >=100', action: 'uptitrate' },
-  { condition: 'HR >=50', action: 'uptitrate' },
+  { condition: 'SBP >=100 and asymptomatic', action: 'uptitrate' },
+  { condition: 'HR >=50 (beta-blockers)', action: 'uptitrate' },
   { condition: 'K+ <5.0', action: 'uptitrate' },
-  { condition: 'SBP <90', action: 'hold' },
+  { condition: 'SBP <90 or symptomatic hypotension', action: 'hold' },
   { condition: 'HR <50', action: 'hold' },
-  { condition: 'K+ >5.5', action: 'hold' },
-  { condition: 'Cr increase >30%', action: 'hold' },
+  { condition: 'K+ >5.5 (steroidal MRA; not the finerenone rule)', action: 'hold' },
+  { condition: 'Cr increase >30% (ARNI/steroidal MRA; not the finerenone rule)', action: 'hold' },
 ];
+
+export const SAFETY_GATE_SCOPE =
+  'Professional titration reference, not instructions for patient self-adjustment. These generic potassium/creatinine hold gates do not apply to finerenone. Use the separate Finerenone Decision Guide for the heart-failure potassium table, dose bands, restart footnotes and renal warning; do not substitute the CKD/type 2 diabetes table.';
 
 export const NON_PHARMACOLOGICAL = {
   sodium: {
     label: 'Dietary Sodium',
     target:
-      'Individual target set by the care team and written in the care plan; less than 2,000 mg/day is a commonly used target',
+      'Individual target set by the care team and written in the care plan; less than 2,000 mg/day is a commonly used target, not a universal prescription',
   },
   activity: {
     label: 'Physical Activity',
@@ -302,31 +306,33 @@ export const GENERIC_BRIDGE_ITEMS: GenericBridgeItem[] = [
   {
     drugClass: 'ACE inhibitor OR ARB',
     agent: 'Lisinopril or Losartan',
-    monthlyCost: '$5-9/month',
+    monthlyCost: 'About $5-9/month',
     note: '$9 tier on the Walmart list; about $5.40-$5.50 at Cost Plus Drugs',
   },
   {
     drugClass: 'Beta-blocker',
     agent: 'Carvedilol generic',
-    monthlyCost: '~$6/month',
+    monthlyCost: 'About $6/month',
     note: 'not on the Walmart list at any tier; about $5.66 at Cost Plus Drugs',
   },
   {
     drugClass: 'MRA',
     agent: 'Spironolactone generic',
-    monthlyCost: '$6-9/month',
+    monthlyCost: 'About $6-13/month',
     note: '25 mg is not on the Walmart list; about $5.90 at Cost Plus Drugs',
   },
   {
     drugClass: 'Metformin',
     agent: 'Metformin',
-    monthlyCost: '$5-9/month',
+    monthlyCost: 'About $5-9/month',
     note: 'if diabetic/prediabetic',
   },
 ];
 
 export const GENERIC_BRIDGE_PRINCIPLE =
-  'Generic therapy is superior to NO therapy. Never delay treatment while waiting for paperwork.';
+  'Pursue indicated, tolerated therapy while addressing cost barriers. Clinician selection and monitoring still apply; a low price does not establish suitability or guarantee access.';
+
+export const GENERIC_BRIDGE_TITLE = 'Generic Bridge - verify local access and cost';
 
 export const GENERIC_BRIDGE_PRICE_NOTE =
-  'Prices verified 2026-09-17 against the Walmart $4/$9 program list (effective 03/24/2025) and Cost Plus Drugs: about $28 for the four-drug set at Cost Plus Drugs (plus shipping) and about $36 at Walmart, which does not list carvedilol. SGLT2i are not part of the bridge. Prices change — confirm locally before quoting them to a patient.';
+  'Illustrative September 17, 2026 price snapshots from the Toolkit, not current quotes. Pharmacy, dose, quantity, eligibility and shipping affect cost; a discount list may not carry every drug. Verify the complete regimen locally. This bridge does not include an SGLT2i: record that gap and pursue access rather than implying full GDMT coverage.';

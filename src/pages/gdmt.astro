@@ -8,10 +8,12 @@ import {
   FINERENONE_CONTRAINDICATIONS,
   FINERENONE_INTERACTIONS,
   SAFETY_GATE_RULES,
+  SAFETY_GATE_SCOPE,
   NON_PHARMACOLOGICAL,
   GENERIC_BRIDGE_ITEMS,
   GENERIC_BRIDGE_PRINCIPLE,
   GENERIC_BRIDGE_PRICE_NOTE,
+  GENERIC_BRIDGE_TITLE,
 } from '../data/gdmt';
 
 const uptitrate = SAFETY_GATE_RULES.filter((r) => r.action === 'uptitrate');
@@ -93,6 +95,7 @@ const hold = SAFETY_GATE_RULES.filter((r) => r.action === 'hold');
   </section>
 
   <section aria-labelledby="safety-gates" class="mb-8 grid gap-4 sm:grid-cols-2">
+    <p id="safety-gates" class="rounded-lg border border-[color:var(--color-alert)] p-4 text-sm sm:col-span-2">{SAFETY_GATE_SCOPE} See the <a class="underline" href="/titration">titration reference</a> for the complete potassium ladder.</p>
     <div class="rounded-lg border border-[color:var(--color-grid)] bg-white p-4">
       <h3 class="text-sm font-semibold uppercase tracking-wide text-[color:var(--color-cool)]/70">Uptitrate if</h3>
       <ul class="mt-2 space-y-1 text-sm">
@@ -181,7 +184,7 @@ const hold = SAFETY_GATE_RULES.filter((r) => r.action === 'hold');
   </section>
 
   <section aria-labelledby="generic-bridge" class="mb-8">
-    <h2 id="generic-bridge" class="mb-2 text-lg font-semibold">Generic Bridge (~$28–36/month for the set)</h2>
+    <h2 id="generic-bridge" class="mb-2 text-lg font-semibold">{GENERIC_BRIDGE_TITLE}</h2>
     <p class="mb-3 text-sm text-[color:var(--color-cool)]/80">{GENERIC_BRIDGE_PRINCIPLE}</p>
     <ul class="space-y-2 text-sm">
       {GENERIC_BRIDGE_ITEMS.map((g) => (

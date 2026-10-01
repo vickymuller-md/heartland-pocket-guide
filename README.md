@@ -1,7 +1,7 @@
 # Rural HF Pocket Guide
 
 > Offline-capable, zero-login Progressive Web App exposing the essential clinical reference
-> content of the **HEARTLAND Protocol v3.3** for primary care clinicians managing heart
+> content of the **HEARTLAND Protocol**, incorporating reviewed Toolkit V3.4 references, for professionals studying heart
 > failure in rural and resource-limited US settings.
 
 **Live site:** https://guide.heartlandprotocol.org
@@ -10,8 +10,8 @@
 ([`LICENSE-CONTENT.md`](LICENSE-CONTENT.md))
 **This guide's DOI:** Zenodo [10.5281/zenodo.19634993](https://doi.org/10.5281/zenodo.19634993)
 (v0.1.0; all versions: [10.5281/zenodo.19634992](https://doi.org/10.5281/zenodo.19634992))
-**Related DOIs:** HEARTLAND Implementation Toolkit V3.3 —
-[10.5281/zenodo.19101219](https://doi.org/10.5281/zenodo.19101219)
+**Related DOIs:** HEARTLAND Implementation Toolkit V3.4 —
+[10.5281/zenodo.23073640](https://doi.org/10.5281/zenodo.23073640)
 | Cureus article — [10.7759/cureus.104817](https://doi.org/10.7759/cureus.104817)
 | OSF [10.17605/OSF.IO/YUSGH](https://doi.org/10.17605/OSF.IO/YUSGH)
 
@@ -25,7 +25,7 @@ titration workflows, reports) see the sibling application at <https://heartlandp
 
 ## Contents
 
-Nine pages, all derived from `HEARTLAND_Protocol v3.3`:
+Nine reference pages with selected Toolkit V3.4 reconciliations. The historical gallery remains identified separately; it does not substitute for the published edition or authorize distribution of prototype cards to patients.
 
 1. Home — quick navigation
 2. GDMT quick reference — HFrEF quadruple therapy + HFpEF priority ladder
@@ -39,10 +39,16 @@ Nine pages, all derived from `HEARTLAND_Protocol v3.3`:
 
 ## Stack
 
-- Astro 5 (static) + TypeScript strict
+- Astro 7 (static) + TypeScript strict; Node.js 22.12 or later
 - Tailwind CSS v4 (via `@tailwindcss/vite`)
 - `@vite-pwa/astro` (workbox service worker)
 - Vanilla CSS tokens mirrored from `heartland-app` (warm cream / navy / coral)
+
+Compatibility note: `@vite-pwa/astro` 1.2.0 still declares an Astro peer range ending at 5.
+The package override selects the patched Astro 7.3.5 for this project; this is not a claim
+of upstream support. A clean install, static build, generated-worker contract and isolated
+Chromium offline navigation were checked for this combination. Re-run these checks when
+either integration changes; do not remove offline behavior to make an upgrade pass.
 
 ## Local development
 
@@ -78,6 +84,8 @@ Target host: Vercel, domain `guide.heartlandprotocol.org`. No server-side code �
 site renders to static HTML + assets. Service worker precaches everything.
 
 ## How to cite
+
+The citation below identifies the historical v0.1.0 archive. The v0.2.0 release notes are in [RELEASE_NOTES_v0.2.0.md](RELEASE_NOTES_v0.2.0.md); its version DOI is reconciled after publication.
 
 > Muller Ferreira V. Rural HF Pocket Guide (Version 0.1.0) [software]. Zenodo; 2026.
 > doi:10.5281/zenodo.19634993. Available at https://guide.heartlandprotocol.org.

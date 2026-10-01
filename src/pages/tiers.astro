@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PrintButton from '../components/PrintButton.astro';
+import { RESOURCE_TIER_PRINCIPLE, PHARMACY_PARTICIPATION, AUTHORITY_BOUNDARY } from '../data/implementation';
 
 type TierKey = 'tier1' | 'tier2' | 'tier3';
 
@@ -8,9 +9,9 @@ const rows: { component: string; tier1: string; tier2: string; tier3: string }[]
   { component: 'Risk stratification', tier1: 'Score at discharge', tier2: 'Full CKM + Score', tier3: 'Full CKM + Score' },
   {
     component: 'GDMT',
-    tier1: '≥2 classes, prioritize SGLT2i + BB',
-    tier2: 'Target all classes in 14 days',
-    tier3: 'Rapid sequence per STRONG-HF',
+    tier1: 'All clinically indicated classes; coordinated access and monitoring',
+    tier2: 'Same clinical goal; structured follow-up and laboratory review',
+    tier3: 'Same clinical goal; multidisciplinary monitoring when indicated',
   },
   {
     component: 'Monitoring',
@@ -26,15 +27,15 @@ const rows: { component: string; tier1: string; tier2: string; tier3: string }[]
   },
   {
     component: 'Follow-up',
-    tier1: '48–72h call, 14-day visit',
-    tier2: '48h call, 7-day visit, weekly ×4',
-    tier3: '48h call, 7-day visit, weekly ×4+',
+    tier1: 'Risk-led timing (Module 1.3); phone/paper with named coverage',
+    tier2: 'Risk-led timing (Module 1.3); coordinated visits and backup',
+    tier3: 'Risk-led timing (Module 1.3); multidisciplinary coverage',
   },
   {
     component: 'Staffing',
-    tier1: 'RN/MA + physician (MD)',
-    tier2: 'RN champion, MA, PharmD',
-    tier3: 'RN coordinator, PharmD, CHW',
+    tier1: 'Named clinician with RN/MA; local/remote pharmacist option',
+    tier2: 'RN champion, MA, pharmacist when available',
+    tier3: 'Multidisciplinary team with pharmacist and CHW when available',
   },
   {
     component: 'CHW',
@@ -44,7 +45,7 @@ const rows: { component: string; tier1: string; tier2: string; tier3: string }[]
   },
   {
     component: 'Financial',
-    tier1: 'Generic bridge',
+    tier1: 'Generic bridge + coordinated assistance when indicated',
     tier2: 'PAP pursuit + generic bridge',
     tier3: 'Full navigation + 340B + PAP',
   },
@@ -82,13 +83,20 @@ const meta: Record<TierKey, { label: string; tagline: string; border: string; ba
       <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Module 8.2</p>
       <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Implementation Tiers</h1>
       <p class="mt-2 max-w-2xl text-sm text-[color:var(--color-cool)]/80">
-        HEARTLAND is designed to scale: Tier 1 is the minimum viable bundle a solo clinic can
-        adopt; Tier 3 is a fully-staffed program. Pick the tier that matches your current staff
-        and resources — you can grow.
+        Resource tiers describe delivery capacity, not different standards of clinically indicated care.
+        Identify the available staff and resources, then document gaps and additional support needed for the individual care plan.
       </p>
     </div>
     <PrintButton />
   </header>
+
+  <aside class="mb-6 space-y-3 rounded-lg border border-[color:var(--color-grid)] bg-white p-5 text-sm">
+    <h2 class="font-semibold">Same clinical goal, different delivery support</h2>
+    <p>{RESOURCE_TIER_PRINCIPLE}</p>
+    <p>{PHARMACY_PARTICIPATION}</p>
+    <p>{AUTHORITY_BOUNDARY}</p>
+    <a href="/readiness" class="font-semibold underline">Open the local readiness and referral-context guide</a>
+  </aside>
 
   <section aria-labelledby="tier-cards" class="mb-8 grid gap-3 sm:grid-cols-3">
     {(['tier1', 'tier2', 'tier3'] as const).map((k) => (

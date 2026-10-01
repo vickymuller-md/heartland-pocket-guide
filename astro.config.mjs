@@ -16,7 +16,7 @@ export default defineConfig({
         name: 'Rural HF Pocket Guide',
         short_name: 'Pocket Guide',
         description:
-          'Offline clinical reference for rural heart failure management — HEARTLAND Protocol v3.3.',
+          'Offline educational implementation-support reference for the HEARTLAND Protocol.',
         start_url: '/',
         scope: '/',
         display: 'standalone',
@@ -35,7 +35,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{html,js,css,png,jpg,svg,webmanifest,woff2}'],
+        globPatterns: ['**/*.{html,js,css,png,jpg,svg,webmanifest,woff2,md}'],
         navigateFallback: '/',
         cleanupOutdatedCaches: true,
       },

@@ -3,13 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PrintButton from '../components/PrintButton.astro';
 
 const cards: { file: string; title: string }[] = [
-  { file: '01_Pocket_Card_GDMT.jpg', title: 'GDMT Pocket Card' },
+  { file: '01_Pocket_Card_GDMT_v341.png', title: 'GDMT Pocket Card (V3.4.1)' },
   { file: '02_Pocket_Card_Red_Flags.jpg', title: 'Red Flags Pocket Card' },
   { file: '03_Patient_Daily_Diary.jpg', title: 'Patient Daily Diary' },
   { file: '04_Track_Assignment_Form.jpg', title: 'Track Assignment Form' },
   { file: '05_Financial_Navigation_Tracker.jpg', title: 'Financial Navigation Tracker' },
   { file: '06_Risk_Score_Reference.jpg', title: 'Risk Score Reference' },
-  { file: '07_Implementation_Tiers_Summary.jpg', title: 'Implementation Tiers Summary' },
+  { file: '07_Implementation_Tiers_Summary_v341.png', title: 'Implementation Tiers Summary (V3.4.1)' },
   { file: '08_SBAR_Handoff_Template.jpg', title: 'SBAR Handoff Template' },
   { file: '09_TeachBack_Checklist.jpg', title: 'Teach-Back Checklist' },
   { file: '10_Comorbidity_Quick_Reference.jpg', title: 'Comorbidity Quick Reference' },
@@ -18,7 +18,7 @@ const cards: { file: string; title: string }[] = [
 
 <BaseLayout
   title="Pocket Card Gallery"
-  description="Ten HEARTLAND Protocol pocket cards — viewable and downloadable as JPG."
+  description="Ten HEARTLAND Protocol educational pocket cards — viewable and downloadable with version-specific limits."
   pageId="cards"
 >
   <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
@@ -26,8 +26,9 @@ const cards: { file: string; title: string }[] = [
       <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Protocol figures</p>
       <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Pocket Card Gallery</h1>
       <p class="mt-2 max-w-2xl text-sm text-[color:var(--color-cool)]/80">
-        Ten cards for coat pocket, clinic wall, or patient handout. All are available offline
-        once installed. Click any card to open at full resolution — then long-press (mobile) or
+        Ten educational reference cards; check each version and its prototype/distribution limits.
+        Availability is not authorization for direct patient care. Once cached, cards are available offline.
+        Click any card to open at full resolution — then long-press (mobile) or
         right-click to save.
       </p>
     </div>

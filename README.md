@@ -1,17 +1,18 @@
 # Rural HF Pocket Guide
 
 > Offline-capable, zero-login Progressive Web App exposing the essential clinical reference
-> content of the **HEARTLAND Protocol**, incorporating reviewed Toolkit V3.4 references, for professionals studying heart
+> content of the **HEARTLAND Protocol**, incorporating Toolkit V3.4.1 operational clarifications, for professionals studying heart
 > failure in rural and resource-limited US settings.
 
 **Live site:** https://guide.heartlandprotocol.org
 **Author:** Vicky Muller Ferreira, MD
 **License:** dual — code MIT ([`LICENSE`](LICENSE)); clinical content CC BY-NC 4.0
 ([`LICENSE-CONTENT.md`](LICENSE-CONTENT.md))
-**This guide's DOI:** Zenodo [10.5281/zenodo.23074675](https://doi.org/10.5281/zenodo.23074675)
+**Last published guide archive:** Zenodo [10.5281/zenodo.23074675](https://doi.org/10.5281/zenodo.23074675)
 (v0.2.1; all versions: [10.5281/zenodo.19634992](https://doi.org/10.5281/zenodo.19634992))
-**Related DOIs:** HEARTLAND Implementation Toolkit V3.4 —
-[10.5281/zenodo.23073640](https://doi.org/10.5281/zenodo.23073640)
+The current v0.2.2 source adds operational clarification and local-readiness material; its successor archive is pending publication.
+**Related DOIs:** HEARTLAND Implementation Toolkit V3.4.1 —
+[10.5281/zenodo.23076249](https://doi.org/10.5281/zenodo.23076249)
 | Cureus article — [10.7759/cureus.104817](https://doi.org/10.7759/cureus.104817)
 | OSF [10.17605/OSF.IO/YUSGH](https://doi.org/10.17605/OSF.IO/YUSGH)
 
@@ -25,7 +26,7 @@ titration workflows, reports) see the sibling application at <https://heartlandp
 
 ## Contents
 
-Nine reference pages with selected Toolkit V3.4 reconciliations. The historical gallery remains identified separately; it does not substitute for the published edition or authorize distribution of prototype cards to patients.
+Ten reference pages with selected Toolkit V3.4.1 operational clarifications. The gallery identifies two revised V3.4.1 cards separately from preserved historical figures; it does not authorize prototype distribution to patients.
 
 1. Home — quick navigation
 2. GDMT quick reference — HFrEF quadruple therapy + HFpEF priority ladder
@@ -34,8 +35,9 @@ Nine reference pages with selected Toolkit V3.4 reconciliations. The historical 
 5. RPM billing codes (CY2026) — CPT 99445/99453/99454/99457/99458/99470 + RTM
 6. HEARTLAND risk score — 10 variables, tier thresholds, care pathways
 7. Implementation tiers — Tier 1 / Tier 2 / Tier 3 across 8 operational dimensions
-8. Pocket card gallery — 10 protocol figures (JPG)
+8. Pocket card gallery — 10 current links (two versioned PNG cards and eight preserved JPG figures)
 9. About — sources, DOIs, citation, license
+10. Local readiness — four-step guide, referral contexts and downloadable 12-scenario training pack
 
 ## Stack
 
@@ -73,10 +75,11 @@ All clinical values are mirrored from the HEARTLAND app source of truth:
 - `heartland-app/lib/remote-monitoring/constants.ts`
 - `heartland-app/lib/risk-score/constants.ts`
 - `heartland-app/reference/clinical_content.md`
-- `Protocol Figures/*.jpg` (10 files)
+- `heartland-app/lib/implementation/constants.ts`
+- Versioned figures under `Protocol Figures/` (retain historical originals)
 
 These are copied, not imported, to keep the two builds decoupled. If the upstream protocol
-is updated, re-sync the `src/data/` files and the 10 JPGs under `public/figures/`.
+is updated, re-sync the affected `src/data/` files and explicitly map versioned figures under `public/figures/`.
 
 ## Deployment
 
@@ -85,7 +88,7 @@ site renders to static HTML + assets. Service worker precaches everything.
 
 ## How to cite
 
-The citation identifies the immutable v0.2.1 source archive. See [RELEASE_NOTES_v0.2.1.md](RELEASE_NOTES_v0.2.1.md) for the red-flag correction that supersedes v0.2.0. Historical versions remain preserved in Zenodo.
+The citation below identifies the immutable v0.2.1 source archive, not the newer v0.2.2 source. See [RELEASE_NOTES_v0.2.2.md](RELEASE_NOTES_v0.2.2.md) for the operational clarifications. Historical versions remain preserved in Zenodo.
 
 > Muller Ferreira V. Rural HF Pocket Guide (Version 0.2.1) [software]. Zenodo; 2026.
 > doi:10.5281/zenodo.23074675. Available at https://guide.heartlandprotocol.org.

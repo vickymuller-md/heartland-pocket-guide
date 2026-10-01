@@ -1,7 +1,7 @@
 {
   "title": "Rural HF Pocket Guide — HEARTLAND Reference Companion (PWA)",
-  "description": "Version 0.2.1 of the offline-capable, zero-login HEARTLAND reference companion for healthcare professionals in rural and resource-limited settings. The v0.2.1 patch also corrects a legacy red-flag paragraph: no unconditional medication hold or unsupported fixed recheck interval. This release reconciles pharmacotherapy populations and endpoints, finerenone monitoring, individualized sodium-plan wording, dated affordability and billing context, clinician-directed medication holds and the proposed risk-framework boundary. Selected references incorporate the published Toolkit V3.4; the historical pocket-card gallery is not a substitute for that edition or an authorization to distribute prototype cards to patients. Static educational reference only, without patient-data inputs. Software verification and offline availability do not establish clinical validation, patient outcomes, institutional adoption or authorization for patient care.",
-  "version": "0.2.1",
+  "description": "Version 0.2.2 of the offline-capable, zero-login HEARTLAND educational reference companion adds a printable local-readiness page and downloadable training pack with 12 synthetic scenarios, role/coverage worksheets, paper records and respectful-escalation expectations. Resource-tier explanations preserve common clinically indicated goals, risk-led timing and safe monitoring; pharmacy participation and indicated assistance pursuit are not restricted to higher tiers. Referral guidance distinguishes planned consultation, urgent/emergency assessment and advanced-HF/inpatient context, with accepted-transfer responsibility. Two versioned V3.4.1 PNG cards update the current gallery while historical figures remain preserved. Numerical risk, dose and alert constants are unchanged. Static educational reference only, without patient-data inputs. Material preparation and offline availability do not establish completed staff training, clinical validation, patient outcomes, institutional adoption or authorization for patient care.",
+  "version": "0.2.2",
   "publication_date": "2026-10-01",
   "creators": [
     {
@@ -26,7 +26,7 @@
   "language": "eng",
   "related_identifiers": [
     {
-      "identifier": "10.5281/zenodo.23073640",
+      "identifier": "10.5281/zenodo.23076249",
       "relation": "isSupplementTo",
       "resource_type": "publication-report"
     },
@@ -48,5 +48,5 @@
     }
   ],
   "communities": [],
-  "notes": "Related implementation reference: HEARTLAND Toolkit V3.4 (Zenodo doi:10.5281/zenodo.23073640). The separate Cureus article (doi:10.7759/cureus.104817) did not evaluate this software release. The proposed risk framework remains unvalidated against clinical outcomes. Code, structure and configuration are under MIT (LICENSE); clinical content remains CC BY-NC 4.0 (LICENSE-CONTENT.md). The record-level licence refers to code only. Historical gallery and Software Heritage identities remain historical; archiving does not establish clinical approval or deployment."
+  "notes": "Related implementation reference: HEARTLAND Toolkit V3.4.1 (Zenodo doi:10.5281/zenodo.23076249). The separate Cureus article (doi:10.7759/cureus.104817) did not evaluate this software release. The proposed risk framework remains unvalidated against clinical outcomes. Code, structure and configuration are under MIT (LICENSE); clinical content remains CC BY-NC 4.0 (LICENSE-CONTENT.md). The record-level licence refers to code only. Historical gallery and Software Heritage identities remain historical; archiving does not establish clinical approval or deployment."
 }

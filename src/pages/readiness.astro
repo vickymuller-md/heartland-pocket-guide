@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrintButton from '../components/PrintButton.astro';
+import { READINESS_STEPS, REFERRAL_CONTEXTS, REFERRAL_HANDOFF, RESPECTFUL_ESCALATION, AUTHORITY_BOUNDARY, PHARMACY_PARTICIPATION } from '../data/implementation';
+---
+
+<BaseLayout title="Local Readiness & Referral Context" description="Synthetic team preparation, pharmacy participation, referral contexts and accepted handoffs." pageId="readiness">
+  <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-alert-deep)]">Implementation preparation</p>
+      <h1 class="mt-2 text-2xl font-bold sm:text-3xl">Local Readiness & Referral Context</h1>
+    </div>
+    <PrintButton />
+  </header>
+  <p class="mb-6 rounded-lg border border-[color:var(--color-grid)] bg-white p-4 text-sm">Educational preparation for synthetic tabletop exercises only. No patient information, clinical operation or completed-training claim. Local policies, professional authority, coverage and institutional approval remain required.</p>
+
+  <section class="mb-8" aria-labelledby="prepare">
+    <h2 id="prepare" class="mb-3 text-lg font-semibold">Four steps before an institutional evaluation</h2>
+    <ol class="grid gap-3 sm:grid-cols-2">
+      {READINESS_STEPS.map((step, index) => (
+        <li class="rounded-lg border border-[color:var(--color-grid)] bg-white p-4">
+          <p class="text-xs font-semibold uppercase text-[color:var(--color-alert-deep)]">Step {index + 1}</p>
+          <h3 class="mt-1 font-semibold">{step.title}</h3>
+          <p class="mt-2 text-sm">{step.description}</p>
+        </li>
+      ))}
+    </ol>
+    <p class="mt-4 text-sm">The downloadable pack includes role and coverage worksheets, a seven-stage paper packet, contact and correction logs, downtime reconciliation, 12 synthetic scenarios, an observation rubric and remediation records. Blank fields remain unresolved.</p>
+    <a href="/resources/heartland-local-readiness-training.md" download class="mt-3 inline-block rounded-full border border-[color:var(--color-cool)] bg-white px-4 py-2 text-sm font-semibold">Download worksheets and 12 scenarios (Markdown)</a>
+    <p class="mt-2 text-xs">Save the worksheets before an offline exercise. A prepared pack or completed worksheet is not proof of staff competence or permission for patient use.</p>
+  </section>
+
+  <section class="mb-8 space-y-3" aria-labelledby="pharmacy">
+    <h2 id="pharmacy" class="text-lg font-semibold">Pharmacy, authority and respectful escalation</h2>
+    <p class="text-sm">{PHARMACY_PARTICIPATION}</p>
+    <p class="text-sm">{AUTHORITY_BOUNDARY}</p>
+    <p class="rounded-lg border border-[color:var(--color-grid)] bg-white p-4 text-sm">{RESPECTFUL_ESCALATION}</p>
+  </section>
+
+  <section class="space-y-3" aria-labelledby="referral">
+    <h2 id="referral" class="text-lg font-semibold">Choose the referral context</h2>
+    {REFERRAL_CONTEXTS.map((context) => (
+      <article class="rounded-lg border border-[color:var(--color-grid)] bg-white p-4">
+        <h3 class="font-semibold">{context.title}</h3>
+        <p class="mt-2 text-sm">{context.description}</p>
+      </article>
+    ))}
+    <p class="text-sm">{REFERRAL_HANDOFF}</p>
+    <p class="mt-4 text-xs">Separate ambulatory-entry validation and prospective patient evaluation remain deferred. This guide does not extend score applicability or replace an urgent/emergency pathway.</p>
+  </section>
+</BaseLayout>

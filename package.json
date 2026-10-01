@@ -1,7 +1,7 @@
 {
   "name": "heartland-pocket-guide",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Rural HF Pocket Guide — offline-capable PWA clinical reference for the HEARTLAND Protocol.",
   "license": "MIT",
   "author": "Vicky Muller Ferreira, MD",

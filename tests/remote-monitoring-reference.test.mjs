@@ -12,4 +12,6 @@ test('low-pressure guidance preserves escalation and requires clinician-directed
   assert.match(hypotension.action, /do not make independent medication changes/);
   const html = readFileSync(new URL('../dist/red-flags/index.html', import.meta.url), 'utf8');
   assert.match(html, /only as directed by a clinician/);
+  assert.match(html, /contact the provider immediately/);
+  assert.doesNotMatch(html, /hold ARNI\/MRA and the diuretic dose|recheck vitals in 20 minutes/i);
 });
